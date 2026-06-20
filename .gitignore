@@ -1,0 +1,27 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio files
+*.user
+*.suo
+.vs/
+*.sln.docstates
+
+# NuGet packages
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Rider
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test results
+TestResults/
+*.trx
