@@ -1,0 +1,649 @@
+=== 1. SQL Exercise - Advanced concepts.pdf ===
+--- page 1 ---
+Advanced SQL Exercises for Online Retail Store
+ 
+Exercise 1: Ranking and Window Functions
+Goal: Use ROW_NUMBER(), RANK(), DENSE_RANK(), OVER(), and PARTITION BY.
+Scenario:
+Find the top 3 most expensive products in each category using different ranking functions.
+Steps:
+1. Use ROW_NUMBER() to assign a unique rank within each category.
+2. Use RANK() and DENSE_RANK() to compare how ties are handled.
+3. Use PARTITION BY Category and ORDER BY Price DESC.
+Exercise 2: Aggregation with GROUPING SETS, CUBE, and ROLLUP
+Goal: Analyze sales data across multiple dimensions.
+Scenario:
+Generate a report showing total quantity sold by Region and Category using GROUPING SETS, ROLLUP, and CUBE.
+Steps:
+1. Join Orders, OrderDetails, Customers, and Products.
+2. Use GROUPING SETS to get totals by Region, Category, and both.
+3. Use ROLLUP to get subtotals and grand totals.
+4. Use CUBE to get all combinations of Region and Category.
+Exercise 3: CTEs and MERGE
+Goal: Use WITH, CTEs, Recursive CTEs, and MERGE.
+Scenario:
+a) Create a recursive CTE to generate a calendar table.
+b) Use a MERGE statement to update or insert product prices from a staging table.
+Steps:
+1. Create a recursive CTE to generate dates from '2025-01-01' to '2025-01-31'.
+2. Create a StagingProducts table with updated prices.
+3. Use MERGE to update existing products or insert new ones.
+
+--- page 2 ---
+Exercise 4: PIVOT and UNPIVOT
+Goal: Transform data for reporting.
+Scenario:
+Show monthly sales quantity per product in a pivoted format, and then unpivot it back.
+Steps:
+1. Aggregate sales by Product and Month.
+2. Use PIVOT to convert rows into columns (one column per month).
+3. Use UNPIVOT to convert the pivoted data back into row format.
+Exercise 5: Using CTE to Simplify a Query
+Goal: Use Common Table Expressions (CTEs) to simplify complex queries.
+Scenario:
+The business wants to find all customers who have placed more than 3 orders in total.
+Steps:
+1. Create a CTE that counts the number of orders placed by each customer.
+2. Select only those customers who have placed more than 3 orders.
+Sample Query:
+WITH CustomerOrderCounts AS (
+    SELECT 
+        o.CustomerID,
+        COUNT(o.OrderID) AS OrderCount
+    FROM Orders o
+    GROUP BY o.CustomerID
+)
+SELECT 
+    c.CustomerID,
+    c.Name,
+    coc.OrderCount
+FROM CustomerOrderCounts coc
+JOIN Customers c ON c.CustomerID = coc.CustomerID
+WHERE coc.OrderCount > 3;
+
+=== 3. SQL Exercise - Views.pdf ===
+--- page 1 ---
+Employee Management System - SQL Exercises  
+Database Schema  
+Departments Table  
+ 
+    CREATE TABLE Departments (  
+        DepartmentID INT PRIMARY KEY,  
+        DepartmentName VARCHAR(100)  
+    ); 
+     
+Employees Table  
+ 
+    CREATE TABLE Employees (  
+        EmployeeID INT PRIMARY KEY,  
+        FirstName VARCHAR(50),  
+        LastName VARCHAR(50),  
+        DepartmentID INT FOREIGN KEY REFERENCES Departments(DepartmentID),  
+        Salary DECIMAL(10, 2),  
+        JoinDate DATE  
+    ); 
+     
+Exercises  
+Exercise 1: Create a Simple View  
+ 
+    Goal: Create a view to show basic employee details.  
+ 
+    Task:  
+    Create a view named vw_EmployeeBasicInfo that displays EmployeeID, FirstName, 
+LastName, and DepartmentName by joining Employees and Departments.  
+     
+Exercise 2: Add Computed Column - Full Name  
+ 
+    Goal: Use a computed column in a view.  
+ 
+    Task:  
+    Modify or create a view named vw_EmployeeFullName that includes a computed column 
+FullName (concatenation of FirstName and LastName).  
+ 
+--- page 2 ---
+    Example Computed Column:  
+    FirstName + ' ' + LastName AS FullName  
+     
+Exercise 3: Add Computed Column - Annual Salary  
+ 
+    Goal: Add a financial computed column.  
+ 
+    Task:  
+    Create a view named vw_EmployeeAnnualSalary that includes a computed column 
+AnnualSalary (Salary * 12).  
+     
+Exercise 4: Add Multiple Computed Columns  
+ 
+    Goal: Combine multiple computed columns in a single view.  
+ 
+    Task:  
+    Create a view named vw_EmployeeReport that includes:  
+    - EmployeeID  
+    - FullName  
+    - DepartmentName  
+    - AnnualSalary  
+    - Bonus (10% of AnnualSalary)  
+ 
+    Example Bonus Calculation:  
+    (Salary * 12) * 0.10 AS Bonus  
+     
+=== 4. SQL Exercise - Stored procedure.pdf ===
+--- page 1 ---
+Employee Management System SQL Exercises  
+Database Schema  
+The following schema defines the structure for an Employee Management System:  
+Departments Table  
+ 
+CREATE TABLE Departments (  
+    DepartmentID INT PRIMARY KEY,  
+    DepartmentName VARCHAR(100)  
+); 
+ 
+Employees Table  
+ 
+CREATE TABLE Employees (  
+    EmployeeID INT PRIMARY KEY,  
+    FirstName VARCHAR(50),  
+    LastName VARCHAR(50),  
+    DepartmentID INT FOREIGN KEY REFERENCES Departments(DepartmentID),  
+    Salary DECIMAL(10,2),  
+    JoinDate DATE  
+); 
+ 
+Sample Data  
+The following sample data can be used for testing:  
+Departments Sample Data  
+ 
+INSERT INTO Departments (DepartmentID, DepartmentName) VALUES  
+(1, 'HR'),  
+(2, 'Finance'),  
+(3, 'IT'),  
+(4, 'Marketing');  
+ 
+Employees Sample Data  
+ 
+INSERT INTO Employees (EmployeeID, FirstName, LastName, DepartmentID, Salary, 
+JoinDate) VALUES  
+(1, 'John', 'Doe', 1, 5000.00, '2020 -01-15'),  
+(2, 'Jane', 'Smith', 2, 6000.00, '2019 -03-22'),  
+--- page 2 ---
+(3, 'Michael', 'Johnson', 3, 7000.00, '2018 -07-30'),  
+(4, 'Emily', 'Davis', 4, 5500.00, '2021 -11-05');  
+ 
+Exercises  
+Exercise 1: Create a Stored Procedure  
+Goal: Create a stored procedure to retrieve employee details by department.  
+Steps:  
+1. Define the stored procedure with a parameter for DepartmentID.  
+2. Write the SQL query to select employee details based on the DepartmentID.  
+3. Create a stored procedure named `sp_InsertEmployee` with the following code:  
+ 
+CREATE PROCEDURE sp_InsertEmployee  
+    @FirstName VARCHAR(50),  
+    @LastName VARCHAR(50),  
+    @DepartmentID INT,  
+    @Salary DECIMAL(10,2),  
+    @JoinDate DATE  
+AS 
+BEGIN  
+    INSERT INTO Employees (FirstName, LastName, DepartmentID, Salary, JoinDate)  
+    VALUES (@FirstName, @LastName, @DepartmentID, @Salary, @JoinDate);  
+END;  
+ 
+Exercise 2: Modify a Stored Procedure  
+Goal: Modify the stored procedure to include employee salary in the result.  
+Steps:  
+1. Open the existing stored procedure.  
+2. Add the Salary column to the SELECT statement.  
+3. Save the changes  by executing the Stored procedure content . 
+Exercise 3: Delete a Stored Procedure  
+Goal: Delete the stored procedure created in Exercise 1.  
+Steps:  
+1. Write the SQL command to delete the stored procedure.  
+--- page 3 ---
+2. Execute the command.  
+Exercise 4: Execute a Stored Procedure  
+Goal: Execute the stored procedure to retrieve employee details for a specific department.  
+Steps:  
+1. Write the SQL command to execute the stored procedure with a DepartmentID 
+parameter.  
+2. Execute the command and review the results.  
+Exercise 5: Return Data from a Stored Procedure  
+Goal: Create a stored procedure that returns the total number of employees in a 
+department.  
+Steps:  
+1. Define the stored procedure with a parameter for DepartmentID.  
+2. Write the SQL query to count the number of employees in the specified department.  
+3. Save the stored procedure  by executing the Stored procedure content . 
+Exercise 6: Use Output Parameters in a Stored Procedure  
+Goal: Create a stored procedure that returns the total salary of employees in a department 
+using an output parameter.  
+Steps:  
+1. Define the stored procedure with a parameter for DepartmentID and an output 
+parameter for total salary.  
+2. Write the SQL query to calculate the total salary of employees in the specified 
+department.  
+3. Save the stored procedure  by executing the Stored procedure content . 
+Exercise 7: Create a Stored Procedure with Multiple Parameters  
+ 
+Goal: Create a stored procedure to update employee salary.  
+ 
+Steps:  
+1. Open SQL Server Management Studio (SSMS).  
+2. Connect to your database.  
+3. Create a stored procedure named `sp_UpdateEmployeeSalary` to update employee salary  
+4. Execute the stored procedure with the following code:  
+ 
+--- page 4 ---
+EXEC sp_UpdateEmployeeSalary 1, 5500.00;  
+ 
+Exercise 8: Create a Stored Procedure with Conditional Logic  
+ 
+Goal: Create a stored procedure to give a bonus to employees based on their department.  
+ 
+Steps:  
+1. Open SQL Server Management Studio (SSMS).  
+2. Connect to your database.  
+3. Create a stored procedure named `sp_GiveBonus` to give a bonus to employees based on 
+their department . 
+4. Execute the stored procedure with the following code:  
+ 
+EXEC sp_GiveBonus 1, 500.00;  
+ 
+Exercise 9: Use Transactions in a Stored Procedure  
+Goal: Create a stored procedure that updates employee salaries and uses a transaction to 
+ensure data integrity.  
+Steps:  
+1. Define the stored procedure with parameters for EmployeeID and new Salary.  
+2. Write the SQL query to update the employee salary.  
+3. Use a transaction to ensure data integrity.  
+4. Save the stored procedure  by executing the Stored procedure content . 
+Exercise 10: Use Dynamic SQL in a Stored Procedure  
+Goal: Create a stored procedure that uses dynamic SQL to retrieve employee details based 
+on a flexible filter.  
+Steps:  
+1. Define the stored procedure with parameters for filter column and filter value.  
+2. Write the dynamic SQL query to retrieve employee details based on the filter.  
+3. Save the stored procedure  by executing the Stored procedure content . 
+Exercise 11: Handle Errors in a Stored Procedure  
+Goal: Create a stored procedure that handles errors and returns a custom error message.  
+Steps:  
+--- page 5 ---
+1. Define the stored procedure with parameters for EmployeeID and new Salary.  
+2. Write the SQL query to update the employee salary.  
+3. Use TRY...CATCH to handle errors and return a custom error message.  
+4. Save the stored procedure  by executing the Stored procedure content . 
+=== 5. SQL Exercise - Functions.pdf ===
+--- page 1 ---
+Employee Management System - SQL Exercises 
+Database Schema 
+ 
+The Employee Management System database schema consists of the following tables: 
+ 
+1. Departments 
+| Column        | Data Type     | Description                  | 
+|---------------|---------------|------------------------------| 
+| DepartmentID  | INT (PK)      | Unique department ID         | 
+| DepartmentName| VARCHAR(100)  | Name of the department       | 
+ 
+2. Employees 
+| Column        | Data Type     | Description                  | 
+|---------------|---------------|------------------------------| 
+| EmployeeID    | INT (PK)      | Unique employee ID           | 
+| FirstName     | VARCHAR(50)   | Employee's first name        | 
+| LastName      | VARCHAR(50)   | Employee's last name         | 
+| DepartmentID  | INT (FK)      | Linked to Departments        | 
+| Salary        | DECIMAL(10,2) | Monthly salary               | 
+| JoinDate      | DATE          | Date of joining              | 
+ 
+Sample Data 
+ 
+Sample data for testing: 
+ 
+Departments: 
+| DepartmentID | DepartmentName | 
+|--------------|----------------| 
+| 1            | HR             | 
+| 2            | IT             | 
+| 3            | Finance        | 
+ 
+Employees: 
+| EmployeeID | FirstName | LastName | DepartmentID | Salary  | JoinDate   | 
+|------------|-----------|----------|--------------|---------|------------| 
+| 1          | John      | Doe      | 1            | 5000.00 | 2020-01-15 | 
+| 2          | Jane      | Smith    | 2            | 6000.00 | 2019-03-22 | 
+| 3          | Bob       | Johnson  | 3            | 5500.00 | 2021-07-01 | 
+ 
+--- page 2 ---
+Exercises 
+Exercise 1: Create a Scalar Function 
+Goal: Create a scalar function to calculate the annual salary of an employee. 
+Steps: 
+1. Define a scalar function named `fn_CalculateAnnualSalary`. 
+2. The function should take `Salary` as input and return `Salary * 12`. 
+3. Test the function by selecting the annual salary for each employee. 
+Exercise 2: Create a Table-Valued Function 
+Goal: Create a table-valued function to return employees in a specific department. 
+Steps: 
+1. Define a table-valued function named `fn_GetEmployeesByDepartment`. 
+2. The function should take `DepartmentID` as input and return a table with employee 
+details. 
+3. Test the function by selecting employees from the IT department. 
+Exercise 3: Create a User-Defined Function 
+Goal: Create a user-defined function to calculate the bonus for an employee. 
+Steps: 
+1. Define a user-defined function named `fn_CalculateBonus`. 
+2. The function should take `Salary` as input and return `Salary * 0.10`. 
+3. Test the function by selecting the bonus for each employee. 
+Exercise 4: Modify a User-Defined Function 
+Goal: Modify the `fn_CalculateBonus` function to return `Salary * 0.15`. 
+Steps: 
+1. Alter the `fn_CalculateBonus` function to return `Salary * 0.15`. 
+2. Test the modified function by selecting the bonus for each employee. 
+Exercise 5: Delete a User-Defined Function 
+Goal: Delete the `fn_CalculateBonus` function. 
+Steps: 
+--- page 3 ---
+1. Drop the `fn_CalculateBonus` function. 
+2. Verify that the function has been deleted. 
+Exercise 6: Execute a User-Defined Function 
+Goal: Execute the `fn_CalculateAnnualSalary` function. 
+Steps: 
+1. Use the `fn_CalculateAnnualSalary` function to calculate the annual salary for each 
+employee. 
+2. Verify the results. 
+Exercise 7: Return Data from a Scalar Function 
+Goal: Return the annual salary for a specific employee using `fn_CalculateAnnualSalary`. 
+Steps: 
+1. Execute the `fn_CalculateAnnualSalary` function for an employee with `EmployeeID = 1`. 
+2. Verify the result. 
+Exercise 8: Return Data from a Table-Valued Function 
+Goal: Return employees from the Finance department using 
+`fn_GetEmployeesByDepartment`. 
+Steps: 
+1. Execute the `fn_GetEmployeesByDepartment` function for `DepartmentID = 3`. 
+2. Verify the results. 
+Exercise 9: Create a Nested User-Defined Function 
+Goal: Create a nested user-defined function to calculate the total compensation for an 
+employee. 
+Steps: 
+1. Define a user-defined function named `fn_CalculateTotalCompensation`. 
+2. The function should use `fn_CalculateAnnualSalary` and `fn_CalculateBonus` to calculate 
+total compensation. 
+3. Test the function by selecting the total compensation for each employee. 
+Exercise 10: Modify a Nested User-Defined Function 
+Goal: Modify the `fn_CalculateTotalCompensation` function to include a new bonus 
+calculation. 
+--- page 4 ---
+Steps: 
+1. Alter the `fn_CalculateTotalCompensation` function to use the modified 
+`fn_CalculateBonus` function. 
+2. Test the modified function by selecting the total compensation for each employee. 
+=== 6. SQL Exercise - Triggers.pdf ===
+--- page 1 ---
+Employee Management System - SQL Server Exercises  
+Database Schema  
+The following schema defines the structure for an Employee Management System:  
+Departments  
+ 
+| Column        | Data Type     | Description                  |  
+|--------------- |--------------- |------------------------------ | 
+| DepartmentID  | INT (PK)      | Unique department ID         |  
+| DepartmentName| VARCHAR(100)  | Name of the department       |  
+ 
+Employees  
+ 
+| Column        | Data Type     | Description                  |  
+|--------------- |--------------- |------------------------------ | 
+| EmployeeID    | INT (PK)      | Unique employee ID           |  
+| FirstName     | VARCHAR(50)   | Employee's first name        |  
+| LastName      | VARCHAR(50)   | Employee's last name         |  
+| DepartmentID  | INT (FK)      | Linked to Departments        |  
+| Salary        | DECIMAL(10,2) | Monthly salary               |  
+| JoinDate      | DATE          | Date of joining              |  
+ 
+Sample Data  
+The following sample data can be used for testing purposes:  
+Departments  
+ 
+INSERT INTO Departments (DepartmentID, DepartmentName) VALUES  
+(1, 'HR'),  
+(2, 'Finance'),  
+(3, 'IT'),  
+(4, 'Marketing');  
+ 
+Employees  
+ 
+INSERT INTO Employees (EmployeeID, FirstName, LastName, DepartmentID, Salary, 
+JoinDate) VALUES  
+(1, 'John', 'Doe', 1, 5000.00, '2022 -01-15'),  
+(2, 'Jane', 'Smith', 2, 6000.00, '2021 -03-22'),  
+--- page 2 ---
+(3, 'Michael', 'Johnson', 3, 7000.00, '2020 -07-30'),  
+(4, 'Emily', 'Davis', 4, 5500.00, '2019 -11-05');  
+ 
+Hands -On Exercises  
+Exercise 1: Create an After Trigger  
+ 
+**Goal**: Create an AFTER trigger to log changes in the Employees table.  
+ 
+**Steps**:  
+1. Create a new table named EmployeeChanges to store change logs.  
+2. Create an AFTER trigger on the Employees table to insert a record into EmployeeChanges 
+whenever an employee's salary is updated.  
+ 
+Exercise 2: Create an Instead of Trigger  
+ 
+**Goal**: Create an INSTEAD OF trigger to prevent deletions from the Employees table.  
+ 
+**Steps**:  
+1. Create an INSTEAD OF DELETE trigger on the Employees table.  
+2. The trigger should raise an error message and prevent the deletion of any employee 
+record.  
+ 
+Exercise 3: Create a Logon Trigger  
+ 
+**Goal**: Create a LOGON trigger to restrict access to the database during maintenance 
+hours.  
+ 
+**Steps**:  
+1. Create a LOGON trigger to check the current time.  
+2. If the current time is within the maintenance window (e.g., 2 AM to 3 AM), the trigger 
+should prevent the login and raise an error message.  
+ 
+Exercise 4: Modify a Trigger using SSMS  
+ 
+**Goal**: Modify an existing trigger using SQL Server Management Studio (SSMS).  
+ 
+**Steps**:  
+1. Open SSMS and connect to the database.  
+2. Locate the trigger you want to modify in the Object Explorer.  
+3. Right -click the trigger and select Modify.  
+--- page 3 ---
+4. Make the necessary changes to the trigger's logic.  
+5. Save and execute the modified trigger.  
+ 
+Exercise 5: Delete a Trigger  
+ 
+**Goal**: Delete an existing trigger from the Employees table.  
+ 
+**Steps**:  
+1. Open SSMS and connect to the database.  
+2. Locate the trigger you want to delete in the Object Explorer.  
+3. Right -click the trigger and select Delete.  
+4. Confirm the deletion.  
+ 
+Exercise 6: Create a Trigger to Update a Computed Column  
+ 
+**Goal**: Create a trigger to update a computed column in the Employees table.  
+ 
+**Steps**:  
+1. Add a new column named AnnualSalary to the Employees table.  
+2. Create a trigger to update the AnnualSalary column whenever the Salary column is 
+updated.  
+3. The AnnualSalary column should be computed as Salary * 12.  
+ 
+=== 7. SQL Exercise - Cursors.pdf ===
+--- page 1 ---
+Employee Management System - SQL Server Cursor Exercises  
+Database Schema  
+ 
+We will use the following schema for the Employee Management System:  
+ 
+1. Departments  
+| Column        | Data Type     | Description                  |  
+|--------------- |--------------- |------------------------------ | 
+| DepartmentID  | INT (PK)      | Unique department ID         |  
+| DepartmentName| VARCHAR(100)  | Name of the department       |  
+ 
+2. Employees  
+| Column        | Data Type     | Description                  |  
+|--------------- |--------------- |------------------------------ | 
+| EmployeeID    | INT (PK)      | Unique employee ID           |  
+| FirstName     | VARCHAR(50)   | Employee's first name        |  
+| LastName      | VARCHAR(50)   | Employee's last name         |  
+| DepartmentID  | INT (FK)      | Linked to Departments        |  
+| Salary        | DECIMAL(10,2) | Monthly salary               |  
+| JoinDate      | DATE          | Date of joining              |  
+ 
+Sample Data  
+ 
+We will use the following sample data for testing:  
+ 
+Departments:  
+| DepartmentID | DepartmentName |  
+|-------------- |---------------- | 
+| 1            | HR             |  
+| 2            | IT             |  
+| 3            | Finance        |  
+ 
+Employees:  
+| EmployeeID | FirstName | LastName | DepartmentID | Salary  | JoinDate   |  
+|------------ |----------- |---------- |-------------- |--------- |------------ | 
+| 1          | John      | Doe      | 1            | 5000.00 | 2020 -01-15 | 
+| 2          | Jane      | Smith    | 2            | 6000.00 | 2019 -03-22 | 
+| 3          | Bob       | Johnson  | 3            | 5500.00 | 2021 -07-30 | 
+ 
+--- page 2 ---
+Exercises  
+Exercise 1: Create a Cursor  
+ 
+Goal: Create a cursor to iterate over all employees and print their details.  
+ 
+Steps:  
+1. Declare a cursor to select all columns from the Employees table.  
+2. Open the cursor.  
+3. Fetch each row from the cursor.  
+4. Print the details of each employee.  
+5. Close the cursor.  
+ 
+Exercise 2: Types of Cursors  
+ 
+Goal: Understand the different types of cursors in SQL Server.  
+ 
+Steps:  
+1. Declare a static cursor to select all columns from the Employees table.  
+2. Declare a dynamic cursor to select all columns from the Employees table.  
+3. Declare a forward -only cursor to select all columns from the Employees table.  
+4. Declare a keyset -driven cursor to select all columns from the Employees table.  
+5. Compare the behavior of each cursor type.  
+ 
+=== 8. SQL Exercise - Exception handling.pdf ===
+--- page 1 ---
+Employee Management System SQL Server Exercises 
+Database Schema 
+ 
+CREATE TABLE Departments ( 
+    DepartmentID INT PRIMARY KEY, 
+    DepartmentName VARCHAR(100) NOT NULL 
+); 
+ 
+CREATE TABLE Employees ( 
+    EmployeeID INT PRIMARY KEY, 
+    FirstName VARCHAR(50), 
+    LastName VARCHAR(50), 
+    Email VARCHAR(100) UNIQUE, 
+    Salary DECIMAL(10, 2), 
+    DepartmentID INT, 
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID) 
+); 
+ 
+CREATE TABLE AuditLog ( 
+    LogID INT IDENTITY(1,1) PRIMARY KEY, 
+    Action VARCHAR(100), 
+    ErrorMessage VARCHAR(4000), 
+    ActionDate DATETIME DEFAULT GETDATE() 
+); 
+ 
+Question 1: Basic TRY...CATCH for Error Logging 
+ 
+Scenario: You want to insert a new employee, but sometimes the email might already exist. 
+ 
+Task: 
+1. Write a stored procedure AddEmployee that: 
+   - Accepts employee details. 
+   - Tries to insert into Employees. 
+   - If an error occurs, catches it and logs the error message into AuditLog. 
+ 
+Learning Outcome: Understand basic TRY...CATCH and error logging. 
+ 
+--- page 2 ---
+Question 2: Using THROW to Re-raise Errors 
+ 
+Scenario: You want to log the error but also let the application know something went 
+wrong. 
+ 
+Task: 
+1. Modify the AddEmployee procedure: 
+   - After logging the error in AuditLog, use THROW to re-raise the error. 
+ 
+Learning Outcome: Learn how to propagate errors after handling them. 
+ 
+Question 3: Custom Error with RAISERROR 
+ 
+Scenario: You want to validate that salary must be greater than 0. 
+ 
+Task: 
+1. In the AddEmployee procedure: 
+   - Before inserting, check if Salary <= 0. 
+   - If so, use RAISERROR to raise a custom error: 'Salary must be greater than zero.' 
+ 
+Learning Outcome: Use RAISERROR for custom business rule enforcement. 
+ 
+Question 4: Nested TRY...CATCH with RAISERROR 
+ 
+Scenario: You want to simulate a nested error handling scenario. 
+ 
+Task: 
+1. Create a procedure TransferEmployee that: 
+   - Updates an employee's department. 
+   - If the department doesn't exist, raise a custom error. 
+   - Use nested TRY...CATCH to catch and log the error, then re-raise it. 
+ 
+Learning Outcome: Understand nested error handling and control flow. 
+ 
+Question 5: Logging All Errors in a Transaction 
+ 
+Scenario: You want to ensure that either all changes succeed or none do. 
+ 
+Task: 
+1. Create a procedure BatchInsertEmployees: 
+--- page 3 ---
+   - Accepts multiple employee records (simulate with multiple inserts). 
+   - Wrap the inserts in a transaction. 
+   - If any insert fails, roll back and log the error. 
+ 
+Learning Outcome: Combine transactions with TRY...CATCH and error logging. 
+ 
+Question 6: Dynamic RAISERROR with Severity and State 
+ 
+Scenario: You want to raise different errors based on different conditions. 
+ 
+Task: 
+1. Modify AddEmployee: 
+   - If salary is too low (< 1000), raise a warning (severity 10). 
+   - If salary is negative, raise an error (severity 16). 
+   - Use RAISERROR with different severity levels. 
+ 
+Learning Outcome: Learn how severity and state affect error behavior. 
+ 
