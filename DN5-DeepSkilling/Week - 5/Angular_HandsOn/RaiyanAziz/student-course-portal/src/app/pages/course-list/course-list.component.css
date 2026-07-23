@@ -1,0 +1,27 @@
+.course-list {
+  padding: 1.5rem;
+}
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.search-bar input {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  width: 260px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.loading {
+  color: #6b7280;
+  font-style: italic;
+}
+.error {
+  color: #dc2626;
+  font-weight: 600;
+}

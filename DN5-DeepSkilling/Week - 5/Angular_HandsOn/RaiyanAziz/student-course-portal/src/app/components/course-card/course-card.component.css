@@ -1,0 +1,63 @@
+.course-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: height 0.2s ease;
+}
+.course-card h3 {
+  margin: 0 0 0.25rem;
+}
+.code {
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin: 0.1rem 0;
+}
+.credits {
+  font-weight: 600;
+  margin: 0.1rem 0;
+}
+/* HANDS-ON 3 (Step 29): conditional classes */
+.card--enrolled {
+  outline: 2px solid #2563eb;
+}
+.card--full {
+  background: #fef3c7;
+}
+.expanded {
+  min-height: 220px;
+}
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: #fff;
+}
+.badge--passed {
+  background: #16a34a;
+}
+.badge--failed {
+  background: #dc2626;
+}
+.badge--pending {
+  background: #6b7280;
+}
+.actions {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.actions button {
+  cursor: pointer;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  background: #f9fafb;
+}
+.actions .enroll {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}

@@ -1,0 +1,69 @@
+<section class="enroll">
+  <h2>Enrollment Request (Reactive)</h2>
+
+  <form [formGroup]="enrollForm" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label>Student Name</label>
+      <input type="text" formControlName="studentName" />
+      <div class="errors" *ngIf="enrollForm.get('studentName')?.touched">
+        <span *ngIf="enrollForm.get('studentName')?.errors?.['required']">Name is required</span>
+        <span *ngIf="enrollForm.get('studentName')?.errors?.['minlength']"
+          >Name must be at least 3 characters</span
+        >
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Student Email</label>
+      <input type="email" formControlName="studentEmail" />
+      <div class="errors" *ngIf="enrollForm.get('studentEmail')?.touched">
+        <span *ngIf="enrollForm.get('studentEmail')?.errors?.['required']">Email is required</span>
+        <span *ngIf="enrollForm.get('studentEmail')?.errors?.['email']">Enter a valid email</span>
+        <span *ngIf="enrollForm.get('studentEmail')?.pending">Checking email...</span>
+        <span *ngIf="enrollForm.get('studentEmail')?.errors?.['emailTaken']"
+          >Email taken</span
+        >
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Course ID</label>
+      <input type="text" formControlName="courseId" />
+      <div class="errors">
+        <span *ngIf="enrollForm.get('courseId')?.errors?.['required'] && enrollForm.get('courseId')?.touched"
+          >Course ID is required</span
+        >
+        <!-- HANDS-ON 5 (Step 54): custom validator error -->
+        <span *ngIf="enrollForm.get('courseId')?.errors?.['noCourseCode']"
+          >Course code starting with XX is not allowed.</span
+        >
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Preferred Semester</label>
+      <select formControlName="preferredSemester">
+        <option value="Odd">Odd</option>
+        <option value="Even">Even</option>
+      </select>
+    </div>
+
+    <div class="field checkbox">
+      <label><input type="checkbox" formControlName="agreeToTerms" /> I agree to the terms</label>
+    </div>
+
+    <!-- HANDS-ON 5 (Step 56): dynamic FormArray of additional courses -->
+    <div class="field">
+      <label>Additional Courses</label>
+      <div *ngFor="let ctrl of additionalCourses.controls; let i = index" class="array-row">
+        <input [formControl]="$any(ctrl)" placeholder="Course code" />
+        <button type="button" (click)="removeCourse(i)">Remove</button>
+      </div>
+      <button type="button" (click)="addCourse()">Add Another Course</button>
+    </div>
+
+    <div class="buttons">
+      <button type="submit" [disabled]="enrollForm.invalid">Submit</button>
+    </div>
+  </form>
+</section>

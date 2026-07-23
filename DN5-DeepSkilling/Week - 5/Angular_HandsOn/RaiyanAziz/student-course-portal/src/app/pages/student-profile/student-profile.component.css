@@ -1,0 +1,11 @@
+.profile {
+  padding: 1.5rem;
+}
+.card {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+  max-width: 360px;
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,9 @@
+<!-- HANDS-ON 1 (Step 9): header + router outlet replace the default boilerplate -->
+<app-header></app-header>
+
+<!-- HANDS-ON 8: global loading spinner bound to the LoadingService stream -->
+<div class="global-spinner" *ngIf="loading.isLoading$ | async">Loading…</div>
+
+<main class="app-content">
+  <router-outlet></router-outlet>
+</main>

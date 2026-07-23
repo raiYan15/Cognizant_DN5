@@ -1,0 +1,10 @@
+.detail {
+  padding: 1.5rem;
+}
+.detail a {
+  color: #2563eb;
+  text-decoration: none;
+}
+.error {
+  color: #dc2626;
+}

@@ -1,0 +1,48 @@
+.home {
+  padding: 1.5rem;
+}
+.lead {
+  color: #4b5563;
+  max-width: 640px;
+}
+.stats {
+  display: flex;
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: #f3f4f6;
+  border-radius: 8px;
+  min-width: 120px;
+}
+.stat .value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1d4ed8;
+}
+.stat .label {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+.message {
+  color: #16a34a;
+  font-weight: 600;
+}
+.search {
+  margin: 1rem 0;
+}
+.search input {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  width: 260px;
+}
+app-course-summary-widget,
+app-notification {
+  display: block;
+  margin-top: 1rem;
+}

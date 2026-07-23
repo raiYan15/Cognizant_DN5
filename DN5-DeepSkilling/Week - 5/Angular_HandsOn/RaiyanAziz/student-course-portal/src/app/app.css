@@ -1,0 +1,15 @@
+.app-content {
+  padding: 0;
+}
+.global-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 0.4rem;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.85rem;
+  z-index: 1000;
+}

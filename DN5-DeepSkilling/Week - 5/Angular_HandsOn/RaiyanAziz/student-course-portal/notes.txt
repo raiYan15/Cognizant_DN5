@@ -1,0 +1,28 @@
+Student Course Portal — File Purpose Notes (Hands-On 1, Task 1)
+==============================================================
+
+angular.json          Workspace/build configuration: projects, build & serve targets,
+                      asset/style paths, and production budgets.
+tsconfig.json         Base TypeScript compiler options shared by the whole workspace.
+tsconfig.app.json     TypeScript config for the application build (extends the base,
+                      includes src, excludes spec files).
+tsconfig.spec.json    TypeScript config for unit tests (Jasmine/Karma types + spec files).
+package.json          Project metadata, npm scripts, and dependencies/devDependencies.
+src/main.ts           Application entry point — bootstraps the root standalone App
+                      component with appConfig (bootstrapApplication).
+src/app/app.config.ts Standalone application config (providers): router, HttpClient +
+                      interceptors, and the NgRx store/effects/devtools.
+                      (Replaces the classic app.module.ts in the standalone API.)
+src/app/app.ts        Root standalone component (selector app-root) — hosts the header,
+                      global spinner, and <router-outlet>.
+src/index.html        The single HTML page shell — contains <app-root> where Angular
+                      renders the application.
+
+Build / budgets notes
+---------------------
+- `ng build` compiles into dist/student-course-portal/. The compiled application code
+  lives in the hashed main-*.js bundle in the browser/ output folder.
+- angular.json > architect > build > configurations > production > budgets:
+  * initial maximumWarning 500kB / maximumError 1MB — warn/error thresholds on the
+    total initial bundle size (guards against bundle bloat).
+  * anyComponentStyle maximumWarning 4kB / maximumError 8kB — per-component style budgets.

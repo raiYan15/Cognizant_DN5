@@ -1,0 +1,38 @@
+<section class="home">
+  <!-- Interpolation -->
+  <h1>{{ portalName }}</h1>
+  <p class="lead">
+    Welcome to your Student Course Portal — view your profile, browse courses,
+    check grades and manage enrollments, all in one place.
+  </p>
+
+  <!-- Stats row -->
+  <div class="stats">
+    <div class="stat">
+      <span class="value">{{ (courses$ | async)?.length ?? 0 }}</span>
+      <span class="label">Courses Available</span>
+    </div>
+    <div class="stat">
+      <span class="value">{{ (enrolledIds$ | async)?.length ?? 0 }}</span>
+      <span class="label">Enrolled</span>
+    </div>
+    <div class="stat">
+      <span class="value">{{ gpa }}</span>
+      <span class="label">GPA</span>
+    </div>
+  </div>
+
+  <!-- Event binding + property binding -->
+  <button [disabled]="!isPortalActive" (click)="onEnrollClick()">Enroll Now</button>
+  <p *ngIf="message" class="message">{{ message }}</p>
+
+  <!-- Two-way binding -->
+  <div class="search">
+    <input [(ngModel)]="searchTerm" placeholder="Search courses..." />
+    <p>Searching for: {{ searchTerm }}</p>
+  </div>
+
+  <!-- HANDS-ON 6 demos: shared-store widget + component-scoped notifications -->
+  <app-course-summary-widget />
+  <app-notification />
+</section>

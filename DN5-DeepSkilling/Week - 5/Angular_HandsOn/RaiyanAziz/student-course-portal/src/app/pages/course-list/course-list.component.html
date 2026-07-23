@@ -1,0 +1,36 @@
+<section class="course-list">
+  <h2>Courses</h2>
+
+  <!-- HANDS-ON 7: search updates the URL query param -->
+  <div class="search-bar">
+    <input [(ngModel)]="searchTerm" placeholder="Search courses..." (keyup.enter)="onSearch()" />
+    <button (click)="onSearch()">Search</button>
+  </div>
+
+  <!-- HANDS-ON 8: show the error message from the store, if any -->
+  <p *ngIf="error$ | async as error" class="error">{{ error }}</p>
+
+  <!-- HANDS-ON 3 (Step 25): loading state via *ngIf -->
+  <p *ngIf="loading$ | async" class="loading">Loading courses...</p>
+
+  <ng-container *ngIf="(loading$ | async) === false">
+    <!-- Capture enrolled ids once (async pipe can't be used in event expressions) -->
+    <ng-container *ngIf="(enrolledIds$ | async) ?? [] as enrolledIds">
+      <!-- HANDS-ON 3 (Step 28): *ngIf / else for the empty state -->
+      <div *ngIf="(courses$ | async)?.length; else noCourses" class="grid">
+        <app-course-card
+          *ngFor="let course of courses$ | async; trackBy: trackByCourseId"
+          [course]="course"
+          [enrolledIds]="enrolledIds"
+          (enrollRequested)="onEnroll($event, enrolledIds)"
+          (click)="openCourse(course)"
+          appHighlight="lightblue"
+        ></app-course-card>
+      </div>
+
+      <ng-template #noCourses>
+        <p>No courses available.</p>
+      </ng-template>
+    </ng-container>
+  </ng-container>
+</section>

@@ -1,0 +1,50 @@
+.enroll {
+  padding: 1.5rem;
+  max-width: 460px;
+}
+.field {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.field.checkbox {
+  flex-direction: row;
+}
+label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+input,
+select {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+/* HANDS-ON 4 (Step 45): Angular's form-state CSS classes */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: red;
+}
+input.ng-valid.ng-touched,
+select.ng-valid.ng-touched {
+  border-color: green;
+}
+.errors span {
+  display: block;
+  color: #dc2626;
+  font-size: 0.8rem;
+}
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+.buttons button {
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.success {
+  margin-top: 1rem;
+  color: #16a34a;
+  font-weight: 600;
+}

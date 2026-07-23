@@ -1,0 +1,20 @@
+/* Global styles for the Student Course Portal */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+  background: #f9fafb;
+  color: #111827;
+}
+h1,
+h2,
+h3 {
+  color: #111827;
+}
+button {
+  font-family: inherit;
+}

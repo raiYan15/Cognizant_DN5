@@ -1,0 +1,17 @@
+<section class="detail">
+  <a routerLink="/courses">&larr; Back to courses</a>
+
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+  <div *ngIf="course$ | async as course">
+    <h2>{{ course.name }}</h2>
+    <p><strong>Code:</strong> {{ course.code }}</p>
+    <p><strong>Credits:</strong> {{ course.credits }}</p>
+    <p><strong>Grade status:</strong> {{ course.gradeStatus }}</p>
+  </div>
+
+  <h3>Enrolled Students</h3>
+  <ul>
+    <li *ngFor="let s of students$ | async">{{ s.name }} — {{ s.email }}</li>
+  </ul>
+</section>
