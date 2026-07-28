@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Course } from '../../models/course.model';
@@ -15,7 +16,7 @@ import { CourseSummaryWidgetComponent } from '../../components/course-summary-wi
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, NotificationComponent, CourseSummaryWidgetComponent],
+  imports: [CommonModule, FormsModule, RouterLink, NotificationComponent, CourseSummaryWidgetComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -35,7 +36,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   enrolledIds$: Observable<number[]> = this.store.select(selectEnrolledIds);
 
   // Static stat used in the stats row.
-  gpa = 3.8;
+  gpa = 8.0;
 
   // HANDS-ON 2 (Step 13): event-binding handler.
   onEnrollClick(): void {

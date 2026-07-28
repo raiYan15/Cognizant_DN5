@@ -1,35 +1,65 @@
 <section class="course-list">
-  <h2>Courses</h2>
-
-  <!-- HANDS-ON 7: search updates the URL query param -->
-  <div class="search-bar">
-    <input [(ngModel)]="searchTerm" placeholder="Search courses..." (keyup.enter)="onSearch()" />
-    <button (click)="onSearch()">Search</button>
+  <div class="page-heading">
+    <p class="eyebrow">Course catalog</p>
+    <h2>Courses</h2>
   </div>
 
-  <!-- HANDS-ON 8: show the error message from the store, if any -->
-  <p *ngIf="error$ | async as error" class="error">{{ error }}</p>
+  <div class="search-bar">
+    <label class="sr-only" for="course-search">Search courses</label>
+    <div class="search-field">
+      <svg aria-hidden="true" viewBox="0 0 24 24">
+        <path d="M10.5 18a7.5 7.5 0 1 1 5.31-12.81A7.5 7.5 0 0 1 10.5 18z" />
+        <path d="M16 16l4 4" />
+      </svg>
+      <input
+        id="course-search"
+        [(ngModel)]="searchTerm"
+        placeholder="Search courses..."
+        (keyup.enter)="onSearch()"
+      />
+    </div>
+    <button class="primary-button" (click)="onSearch()">Search</button>
+  </div>
 
-  <!-- HANDS-ON 3 (Step 25): loading state via *ngIf -->
-  <p *ngIf="loading$ | async" class="loading">Loading courses...</p>
+  <div *ngIf="error$ | async as error" class="status-panel status-panel--error">
+    {{ error }}
+  </div>
+
+  <div *ngIf="loading$ | async" class="status-panel">Loading courses...</div>
 
   <ng-container *ngIf="(loading$ | async) === false">
-    <!-- Capture enrolled ids once (async pipe can't be used in event expressions) -->
     <ng-container *ngIf="(enrolledIds$ | async) ?? [] as enrolledIds">
-      <!-- HANDS-ON 3 (Step 28): *ngIf / else for the empty state -->
-      <div *ngIf="(courses$ | async)?.length; else noCourses" class="grid">
-        <app-course-card
-          *ngFor="let course of courses$ | async; trackBy: trackByCourseId"
-          [course]="course"
-          [enrolledIds]="enrolledIds"
-          (enrollRequested)="onEnroll($event, enrolledIds)"
-          (click)="openCourse(course)"
-          appHighlight="lightblue"
-        ></app-course-card>
-      </div>
+      <ng-container *ngIf="courses$ | async as courses">
+        <div *ngIf="courses.length; else noCourses" class="grid">
+          <app-course-card
+            *ngFor="let course of courses; trackBy: trackByCourseId"
+            [course]="course"
+            [enrolledIds]="enrolledIds"
+            (enrollRequested)="onEnroll($event, enrolledIds)"
+            (click)="openCourse(course)"
+            appHighlight="#eef6ff"
+          ></app-course-card>
+        </div>
+      </ng-container>
 
       <ng-template #noCourses>
-        <p>No courses available.</p>
+        <div class="empty-state">
+          <span class="empty-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 7h16" />
+              <path d="M6 7v12h12V7" />
+              <path d="M9 11h6" />
+              <path d="M9 15h4" />
+            </svg>
+          </span>
+          <div>
+            <h3>No courses available</h3>
+            <p>New catalog items will appear here when they are ready.</p>
+            <button class="secondary-button" type="button" (click)="reloadCourses()">
+              Refresh Catalog
+            </button>
+          </div>
+        </div>
       </ng-template>
     </ng-container>
   </ng-container>

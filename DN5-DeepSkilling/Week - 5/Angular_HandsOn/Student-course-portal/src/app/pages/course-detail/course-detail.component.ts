@@ -27,21 +27,20 @@ export class CourseDetailComponent implements OnInit {
   errorMessage = '';
 
   ngOnInit(): void {
-    // snapshot is fine here because we navigate to a fresh component each time.
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = this.route.snapshot.paramMap.get('id');
 
-    this.course$ = this.courseService.getCourseById(id).pipe(
-      catchError((err) => {
-        this.errorMessage = err.message ?? 'Could not load course.';
-        return of({} as Course);
-      })
-    );
+    if (id) {
+      this.course$ = this.courseService.getCourseById(id).pipe(
+        catchError((err) => {
+          this.errorMessage = err.message ?? 'Could not load course.';
+          return of({} as Course);
+        })
+      );
 
-    // HANDS-ON 8 (Step 87): switchMap cancels the previous inner request if the id
-    // changes before the first completes — preventing out-of-order responses.
-    this.students$ = of(id).pipe(
-      switchMap((courseId) => this.enrollmentService.getStudentsByCourse(courseId)),
-      catchError(() => of([] as Student[]))
-    );
+      this.students$ = of(id).pipe(
+        switchMap((courseId) => this.enrollmentService.getStudentsByCourse(courseId)),
+        catchError(() => of([] as Student[]))
+      );
+    }
   }
 }

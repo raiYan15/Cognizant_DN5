@@ -1,17 +1,34 @@
 <section class="detail">
-  <a routerLink="/courses">&larr; Back to courses</a>
+  <a class="back-link" routerLink="/courses">&larr; Back to courses</a>
 
-  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
 
-  <div *ngIf="course$ | async as course">
+  <div *ngIf="course$ | async as course" class="detail-card">
+    <p class="eyebrow">Course details</p>
     <h2>{{ course.name }}</h2>
-    <p><strong>Code:</strong> {{ course.code }}</p>
-    <p><strong>Credits:</strong> {{ course.credits }}</p>
-    <p><strong>Grade status:</strong> {{ course.gradeStatus }}</p>
+    <div class="meta-grid">
+      <div>
+        <span>Code</span>
+        <strong>{{ course.code }}</strong>
+      </div>
+      <div>
+        <span>Credits</span>
+        <strong>{{ course.credits }}</strong>
+      </div>
+      <div>
+        <span>Grade status</span>
+        <strong>{{ course.gradeStatus }}</strong>
+      </div>
+    </div>
   </div>
 
-  <h3>Enrolled Students</h3>
-  <ul>
-    <li *ngFor="let s of students$ | async">{{ s.name }} — {{ s.email }}</li>
-  </ul>
+  <div class="students-panel">
+    <h3>Enrolled Students</h3>
+    <ul>
+      <li *ngFor="let s of students$ | async">
+        <span>{{ s.name }}</span>
+        <strong>{{ s.email }}</strong>
+      </li>
+    </ul>
+  </div>
 </section>

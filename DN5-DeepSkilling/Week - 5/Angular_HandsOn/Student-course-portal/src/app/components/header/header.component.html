@@ -1,5 +1,8 @@
-<nav class="navbar">
-  <span class="brand">{{ portalName }}</span>
+<nav class="navbar" aria-label="Primary navigation">
+  <a class="brand" routerLink="/">
+    <img src="assets/Logosss.jpg" alt="Student Course Portal Logo" class="brand-logo">
+    <span class="brand-name">Student Course Portal</span>
+  </a>
   <ul class="nav-links">
     <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
     <li><a routerLink="/courses" routerLinkActive="active">Courses</a></li>

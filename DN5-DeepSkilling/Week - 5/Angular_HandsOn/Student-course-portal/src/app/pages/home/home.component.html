@@ -1,38 +1,83 @@
 <section class="home">
-  <!-- Interpolation -->
-  <h1>{{ portalName }}</h1>
-  <p class="lead">
-    Welcome to your Student Course Portal — view your profile, browse courses,
-    check grades and manage enrollments, all in one place.
-  </p>
+  <div class="hero-panel">
+    <div class="hero-copy">
+      <p class="eyebrow">Academic dashboard</p>
+      <h1>{{ portalName }}</h1>
+      <p class="lead">
+        View your profile, browse courses, check grades and manage enrollments in one place.
+      </p>
+    </div>
 
-  <!-- Stats row -->
+    <button class="primary-cta" [disabled]="!isPortalActive" (click)="onEnrollClick()">
+      <svg aria-hidden="true" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14" />
+      </svg>
+      Enroll Now
+    </button>
+  </div>
+
   <div class="stats">
     <div class="stat">
+      <span class="stat-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 6.5h7a3 3 0 0 1 3 3v8a3 3 0 0 0-3-3H4z" />
+          <path d="M20 6.5h-7a3 3 0 0 0-3 3v8a3 3 0 0 1 3-3h7z" />
+        </svg>
+      </span>
       <span class="value">{{ (courses$ | async)?.length ?? 0 }}</span>
       <span class="label">Courses Available</span>
     </div>
     <div class="stat">
+      <span class="stat-icon stat-icon--accent" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M8 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0" />
+          <path d="M4 21a8 8 0 0 1 16 0" />
+        </svg>
+      </span>
       <span class="value">{{ (enrolledIds$ | async)?.length ?? 0 }}</span>
       <span class="label">Enrolled</span>
     </div>
     <div class="stat">
+      <span class="stat-icon stat-icon--success" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M3 8l9-4 9 4-9 4z" />
+          <path d="M7 10.5v4.25c0 1.4 2.24 2.75 5 2.75s5-1.35 5-2.75V10.5" />
+        </svg>
+      </span>
       <span class="value">{{ gpa }}</span>
       <span class="label">GPA</span>
     </div>
   </div>
 
-  <!-- Event binding + property binding -->
-  <button [disabled]="!isPortalActive" (click)="onEnrollClick()">Enroll Now</button>
   <p *ngIf="message" class="message">{{ message }}</p>
 
-  <!-- Two-way binding -->
   <div class="search">
-    <input [(ngModel)]="searchTerm" placeholder="Search courses..." />
-    <p>Searching for: {{ searchTerm }}</p>
+    <label class="sr-only" for="home-search">Search courses</label>
+    <div class="search-field">
+      <svg aria-hidden="true" viewBox="0 0 24 24">
+        <path d="M10.5 18a7.5 7.5 0 1 1 5.31-12.81A7.5 7.5 0 0 1 10.5 18z" />
+        <path d="M16 16l4 4" />
+      </svg>
+      <input id="home-search" [(ngModel)]="searchTerm" placeholder="Search courses..." />
+    </div>
+    <p *ngIf="searchTerm">Searching for: {{ searchTerm }}</p>
   </div>
 
-  <!-- HANDS-ON 6 demos: shared-store widget + component-scoped notifications -->
+  <div class="empty-state" *ngIf="(enrolledIds$ | async)?.length === 0">
+    <span class="empty-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M5 6.5h9a4 4 0 0 1 4 4v7H9a4 4 0 0 0-4 4z" />
+        <path d="M5 6.5v15" />
+        <path d="M18 10.5h1.5a2 2 0 0 1 2 2v5" />
+      </svg>
+    </span>
+    <div>
+      <h2>No courses enrolled yet</h2>
+      <p>Browse the catalog to find a course and start building your schedule.</p>
+      <a class="secondary-action" routerLink="/courses">Browse Catalog</a>
+    </div>
+  </div>
+
   <app-course-summary-widget />
   <app-notification />
 </section>

@@ -1,21 +1,23 @@
-<!-- HANDS-ON 3: ngClass (getter), ngStyle (dynamic border), ngSwitch (badge),
-     appHighlight directive on the host, and the creditLabel custom pipe. -->
 <div
   class="course-card"
   [ngClass]="cardClasses"
   [ngStyle]="{ 'border-left': '6px solid ' + borderColor }"
-  appHighlight="lightyellow"
+  appHighlight="#fffbea"
 >
-  <h3>{{ course.name }}</h3>
-  <p class="code">{{ course.code }}</p>
-  <p class="credits">{{ course.credits | creditLabel }}</p>
+  <div class="card-header">
+    <div>
+      <p class="code">{{ course.code }}</p>
+      <h3>{{ course.name }}</h3>
+    </div>
 
-  <!-- *ngSwitch grade badge -->
-  <span [ngSwitch]="course.gradeStatus" class="badge">
-    <span *ngSwitchCase="'passed'" class="badge badge--passed">Passed</span>
-    <span *ngSwitchCase="'failed'" class="badge badge--failed">Failed</span>
-    <span *ngSwitchDefault class="badge badge--pending">Pending</span>
-  </span>
+    <span [ngSwitch]="course.gradeStatus">
+      <span *ngSwitchCase="'passed'" class="badge badge--passed">Passed</span>
+      <span *ngSwitchCase="'failed'" class="badge badge--failed">Failed</span>
+      <span *ngSwitchDefault class="badge badge--pending">Pending</span>
+    </span>
+  </div>
+
+  <p class="credits">{{ course.credits | creditLabel }}</p>
 
   <div *ngIf="isExpanded" class="details">
     <p>Course ID: {{ course.id }}</p>
@@ -23,7 +25,7 @@
   </div>
 
   <div class="actions">
-    <button type="button" (click)="toggleExpand(); $event.stopPropagation()">
+    <button type="button" class="secondary-action" (click)="toggleExpand(); $event.stopPropagation()">
       {{ isExpanded ? 'Hide Details' : 'Show Details' }}
     </button>
     <button type="button" class="enroll" (click)="onEnroll(); $event.stopPropagation()">

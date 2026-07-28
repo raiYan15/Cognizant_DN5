@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Course } from '../../models/course.model';
@@ -10,7 +11,7 @@ import { selectEnrolledCourses } from '../../store/enrollment/enrollment.selecto
 @Component({
   selector: 'app-student-profile',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './student-profile.component.html',
   styleUrl: './student-profile.component.css',
 })
@@ -18,5 +19,5 @@ export class StudentProfileComponent {
   private store = inject(Store);
   enrolledCourses$: Observable<Course[]> = this.store.select(selectEnrolledCourses);
 
-  student = { name: 'Raiyan Aziz', email: 'raiyan@example.com', gpa: 3.8 };
+  student = { name: 'Raiyan Aziz', email: 'raiyan@example.com', gpa: 8.0 };
 }

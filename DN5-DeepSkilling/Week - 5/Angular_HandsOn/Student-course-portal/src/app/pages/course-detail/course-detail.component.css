@@ -1,10 +1,118 @@
 .detail {
-  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 4vw, 3rem);
 }
-.detail a {
-  color: #2563eb;
+
+.back-link {
+  width: fit-content;
+  color: var(--color-primary);
+  font-weight: 800;
   text-decoration: none;
 }
+
+.back-link:hover {
+  color: var(--color-primary-dark);
+}
+
+.detail-card,
+.students-panel,
 .error {
-  color: #dc2626;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.detail-card,
+.students-panel {
+  padding: 1.2rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  color: var(--color-accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.detail h2,
+.students-panel h3 {
+  margin: 0;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.meta-grid div {
+  padding: 0.9rem;
+  background: var(--color-surface-soft);
+  border-radius: 8px;
+}
+
+.meta-grid span {
+  display: block;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.meta-grid strong {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--color-primary-dark);
+  font-size: 1.05rem;
+}
+
+.students-panel ul {
+  display: grid;
+  gap: 0.65rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.students-panel li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0.85rem;
+  background: var(--color-surface-soft);
+  border-radius: 8px;
+}
+
+.students-panel li span {
+  font-weight: 700;
+}
+
+.students-panel li strong {
+  color: var(--color-muted);
+  font-weight: 700;
+}
+
+.error {
+  padding: 0.9rem 1rem;
+  color: #991b1b;
+  background: #fef2f2;
+  border-color: #fecaca;
+  font-weight: 700;
+}
+
+@media (max-width: 680px) {
+  .meta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .students-panel li {
+    flex-direction: column;
+  }
 }

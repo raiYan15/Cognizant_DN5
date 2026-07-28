@@ -27,10 +27,10 @@ export class CourseCardComponent implements OnChanges {
 
   // Enrolled ids passed down from the parent (which reads them from the store),
   // so this card never needs to inject the Store itself.
-  @Input() enrolledIds: number[] = [];
+  @Input() enrolledIds: string[] = [];
 
   // HANDS-ON 2 (Step 21): events bubble UP via @Output. Strongly typed payload.
-  @Output() enrollRequested = new EventEmitter<number>();
+  @Output() enrollRequested = new EventEmitter<string>();
 
   // HANDS-ON 3 (Step 31): local UI state toggled by the "Show Details" button.
   isExpanded = false;
@@ -53,11 +53,11 @@ export class CourseCardComponent implements OnChanges {
   get borderColor(): string {
     switch (this.course?.gradeStatus) {
       case 'passed':
-        return 'green';
+        return '#16a34a';
       case 'failed':
-        return 'red';
+        return '#dc2626';
       default:
-        return 'grey';
+        return '#64748b';
     }
   }
 

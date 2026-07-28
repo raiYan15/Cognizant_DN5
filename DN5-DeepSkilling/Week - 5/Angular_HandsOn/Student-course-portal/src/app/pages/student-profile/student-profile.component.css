@@ -1,11 +1,169 @@
 .profile {
-  padding: 1.5rem;
+  display: grid;
+  gap: 1.35rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 4vw, 3rem);
 }
-.card {
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
+
+.page-heading {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--color-accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.profile h2 {
+  margin: 0;
+  font-size: clamp(1.85rem, 4vw, 2.65rem);
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.85fr) minmax(320px, 1.15fr);
+  gap: 1rem;
+}
+
+.profile-card,
+.enrolled-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.profile-card {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+  padding: 1.2rem;
+}
+
+.avatar {
+  display: inline-grid;
+  width: 3.25rem;
+  height: 3.25rem;
+  place-items: center;
+  color: #fff;
+  background: var(--color-primary);
   border-radius: 8px;
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.profile-card h3,
+.enrolled-panel h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.profile-card p {
+  margin: 0.2rem 0 0;
+  color: var(--color-muted);
+}
+
+dl {
+  margin: 0;
+}
+
+dt {
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+dd {
+  margin: 0.2rem 0 0;
+  color: var(--color-primary-dark);
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.enrolled-panel {
+  padding: 1.2rem;
+}
+
+.enrolled-panel ul {
+  display: grid;
+  gap: 0.7rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.enrolled-panel li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem;
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.enrolled-panel li span {
+  font-weight: 700;
+}
+
+.enrolled-panel li strong {
+  color: var(--color-primary-dark);
+}
+
+.empty-state {
+  display: flex;
+  gap: 0.9rem;
+  margin-top: 1rem;
   padding: 1rem;
-  max-width: 360px;
-  margin-bottom: 1rem;
+  background: var(--color-surface-soft);
+  border-radius: 8px;
+}
+
+.empty-icon {
+  display: inline-grid;
+  flex: 0 0 auto;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+  border-radius: 8px;
+}
+
+.empty-icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.9;
+}
+
+.empty-state h4 {
+  margin: 0 0 0.25rem;
+}
+
+.empty-state p {
+  margin: 0 0 0.65rem;
+  color: var(--color-muted);
+}
+
+.empty-state a {
+  font-weight: 800;
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,18 +1,47 @@
 <section class="profile">
-  <h2>Student Profile</h2>
-  <div class="card">
-    <p><strong>Name:</strong> {{ student.name }}</p>
-    <p><strong>Email:</strong> {{ student.email }}</p>
-    <p><strong>GPA:</strong> {{ student.gpa }}</p>
+  <div class="page-heading">
+    <p class="eyebrow">Student record</p>
+    <h2>Student Profile</h2>
   </div>
 
-  <h3>Enrolled Courses</h3>
-  <ul *ngIf="(enrolledCourses$ | async)?.length; else none">
-    <li *ngFor="let course of enrolledCourses$ | async">
-      {{ course.name }} ({{ course.code }})
-    </li>
-  </ul>
-  <ng-template #none>
-    <p>You are not enrolled in any courses yet.</p>
-  </ng-template>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <span class="avatar" aria-hidden="true">{{ student.name.slice(0, 1) }}</span>
+      <div>
+        <h3>{{ student.name }}</h3>
+        <p>{{ student.email }}</p>
+      </div>
+      <dl>
+        <div>
+          <dt>GPA</dt>
+          <dd>{{ student.gpa }}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="enrolled-panel">
+      <h3>Enrolled Courses</h3>
+      <ul *ngIf="(enrolledCourses$ | async)?.length; else none">
+        <li *ngFor="let course of enrolledCourses$ | async">
+          <span>{{ course.name }}</span>
+          <strong>{{ course.code }}</strong>
+        </li>
+      </ul>
+      <ng-template #none>
+        <div class="empty-state">
+          <span class="empty-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M5 6.5h9a4 4 0 0 1 4 4v7H9a4 4 0 0 0-4 4z" />
+              <path d="M5 6.5v15" />
+            </svg>
+          </span>
+          <div>
+            <h4>No courses enrolled yet</h4>
+            <p>Browse the catalog to get started.</p>
+            <a routerLink="/courses">Browse Catalog</a>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
 </section>

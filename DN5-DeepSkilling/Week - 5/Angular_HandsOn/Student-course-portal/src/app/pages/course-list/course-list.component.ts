@@ -33,7 +33,7 @@ export class CourseListComponent implements OnInit {
   courses$: Observable<Course[]> = this.store.select(selectAllCourses);
   loading$: Observable<boolean> = this.store.select(selectCoursesLoading);
   error$: Observable<string | null> = this.store.select(selectCoursesError);
-  enrolledIds$: Observable<number[]> = this.store.select(selectEnrolledIds);
+  enrolledIds$: Observable<string[]> = this.store.select(selectEnrolledIds);
 
   searchTerm = '';
 
@@ -50,7 +50,7 @@ export class CourseListComponent implements OnInit {
 
   // HANDS-ON 3 (Step 26): trackBy lets Angular update only the changed rows
   // instead of re-rendering the whole list on every array change.
-  trackByCourseId(_index: number, course: Course): number {
+  trackByCourseId(_index: number, course: Course): string {
     return course.id;
   }
 
@@ -64,8 +64,12 @@ export class CourseListComponent implements OnInit {
     this.router.navigate(['courses'], { queryParams: { search: this.searchTerm } });
   }
 
+  reloadCourses(): void {
+    this.store.dispatch(loadCourses());
+  }
+
   // HANDS-ON 9 (Step 100): enroll/unenroll toggles the enrollment slice.
-  onEnroll(courseId: number, enrolledIds: number[]): void {
+  onEnroll(courseId: string, enrolledIds: string[]): void {
     if (enrolledIds.includes(courseId)) {
       this.store.dispatch(unenrollFromCourse({ courseId }));
     } else {

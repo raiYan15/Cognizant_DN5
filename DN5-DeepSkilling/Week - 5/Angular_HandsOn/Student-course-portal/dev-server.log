@@ -1,0 +1,6 @@
+
+> student-course-portal@0.0.0 start
+> ng serve --host 127.0.0.1 --port 4200
+
+ [1mPort 4200 is already in use.
+Would you like to use a different port?[22m [2m(Y/n)[22m[47G
