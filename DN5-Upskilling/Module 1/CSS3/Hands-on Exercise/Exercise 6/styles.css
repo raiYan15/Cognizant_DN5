@@ -1,0 +1,77 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+header {
+  background-color: #1e3a8a;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+/* Navigation menu - bullets removed, horizontal layout */
+.nav-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #1e293b;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-menu li {
+  margin: 0 10px;
+  padding: 12px 16px;
+}
+
+/* Link Pseudo-classes */
+a:link {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #c084fc;
+}
+
+a:hover {
+  color: #facc15;
+  text-decoration: underline;
+}
+
+a:active {
+  color: #ef4444;
+}
+
+.nav-menu a:link,
+.nav-menu a:visited {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-menu a:hover {
+  color: #38bdf8;
+}
+
+/* Event List Styling with list-style-type and list-style-position */
+.event-list {
+  list-style-type: square;
+  list-style-position: inside;
+  background: #ffffff;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.event-list li {
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #e2e8f0;
+}

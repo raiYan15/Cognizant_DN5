@@ -1,0 +1,52 @@
+body {
+  font-family: 'Georgia', serif;
+  background-color: #fcfbf9;
+  color: #2b2b2b;
+  margin: 0;
+  padding: 30px 15px;
+  line-height: 1.7;
+}
+
+header {
+  text-align: center;
+  border-bottom: 2px solid #222;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 32px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 10px 0;
+}
+
+.news-section {
+  max-width: 850px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 30px;
+  border: 1px solid #e0deda;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.news-headline {
+  font-size: 26px;
+  font-family: Arial, sans-serif;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #111;
+}
+
+/* Multi-column layout */
+.news-article {
+  column-count: 2;
+  column-gap: 30px;
+  column-rule: 1px solid gray;
+  text-align: justify;
+}
+
+.news-article p {
+  margin-top: 0;
+  margin-bottom: 16px;
+}

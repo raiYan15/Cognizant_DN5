@@ -1,0 +1,23 @@
+/* External Stylesheet for Local Community Event Portal */
+
+/* Header styles */
+header {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Event container styles */
+.event-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+/* Footer styles */
+footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #666666;
+}

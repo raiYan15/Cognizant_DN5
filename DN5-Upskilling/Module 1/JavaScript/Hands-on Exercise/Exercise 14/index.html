@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 14 - jQuery and Modern Frameworks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f8fafc;
+    }
+    .card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .event-card {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 20px;
+      border-radius: 6px;
+      margin: 15px 0;
+    }
+    button {
+      padding: 8px 16px;
+      margin-right: 8px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .confirmation {
+      display: none;
+      background: #dcfce7;
+      color: #166534;
+      padding: 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .framework-info {
+      background: #f1f5f9;
+      padding: 15px;
+      border-left: 4px solid #4f46e5;
+      border-radius: 4px;
+      margin-top: 25px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>jQuery DOM Interaction & Frameworks</h2>
+
+    <div id="featuredEventCard" class="event-card">
+      <h3>Community Volunteer Drive</h3>
+      <p>Join fellow neighbors in restoring riverside walking trails this weekend.</p>
+      <button id="registerBtn">Register via jQuery</button>
+      <div id="confirmationBox" class="confirmation"></div>
+    </div>
+
+    <div>
+      <button id="hideCardBtn">Fade Out Card</button>
+      <button id="showCardBtn">Fade In Card</button>
+    </div>
+
+    <div class="framework-info">
+      <h4>Advantage of Modern Frameworks (React / Vue)</h4>
+      <p>
+        Unlike imperative libraries like jQuery that require direct manual DOM manipulation, modern frameworks like <strong>React</strong> and <strong>Vue</strong> use a <strong>declarative component-based architecture and Virtual DOM / reactive state management</strong>. This ensures UI automatically syncs with data changes efficiently, making large scalable applications easier to maintain and test.
+      </p>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

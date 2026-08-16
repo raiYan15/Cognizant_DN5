@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 1 - jQuery Library Inclusion</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f8fafc;
+      text-align: center;
+    }
+    .card {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+  <!-- 1. CDN Link -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- 2. Local Fallback / Local Copy Inclusion -->
+  <script>window.jQuery || document.write('<script src="js/jquery-3.7.1.min.js"><\/script>')</script>
+</head>
+<body>
+  <div class="card">
+    <h1>jQuery Inclusion Demo</h1>
+    <p id="helloText">Hello World!</p>
+    <small>Check the browser console (F12) to verify jQuery selection log.</small>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      // Bonus: Log the <p> element text using jQuery
+      console.log("jQuery Selected Text:", $("#helloText").text());
+    });
+  </script>
+</body>
+</html>

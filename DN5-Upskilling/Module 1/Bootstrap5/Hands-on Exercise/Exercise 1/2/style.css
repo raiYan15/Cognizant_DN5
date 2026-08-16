@@ -1,0 +1,27 @@
+﻿/* ================================================
+   Exercise 1.2 — Custom Styles
+   Only minimal overrides are used here.
+   Bootstrap utility classes handle most styling.
+   ================================================ */
+
+/* Hero section gradient background */
+.hero-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Smooth scroll behaviour */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Code tag styling */
+code {
+  color: #e83e8c;
+  background-color: #f8f9fa;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}

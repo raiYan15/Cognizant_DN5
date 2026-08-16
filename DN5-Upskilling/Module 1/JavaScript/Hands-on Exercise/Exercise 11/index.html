@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 11 - Form Handling and Validation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f8fafc;
+    }
+    .form-card {
+      max-width: 480px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .error-msg {
+      color: #dc2626;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    .success-msg {
+      color: #16a34a;
+      font-weight: bold;
+      margin-top: 15px;
+      text-align: center;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-card">
+    <h2>Event Registration Form</h2>
+    <form id="eventForm">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName">
+        <div id="nameError" class="error-msg"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="userEmail">Email Address</label>
+        <input type="text" id="userEmail" name="userEmail">
+        <div id="emailError" class="error-msg"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="eventSelect">Select Event</label>
+        <select id="eventSelect" name="eventSelect">
+          <option value="Neighborhood Clean-up">Neighborhood Clean-up</option>
+          <option value="Community BBQ">Community BBQ</option>
+          <option value="Outdoor Yoga">Outdoor Yoga</option>
+        </select>
+      </div>
+
+      <button type="submit">Submit</button>
+      <div id="formSuccess" class="success-msg"></div>
+    </form>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

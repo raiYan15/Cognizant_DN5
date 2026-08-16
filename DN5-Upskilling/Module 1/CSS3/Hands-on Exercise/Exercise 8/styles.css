@@ -1,0 +1,57 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f5f9;
+  margin: 0;
+  padding: 20px;
+  color: #1e293b;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Box Model: Border, Padding, Margin */
+.eventCard {
+  width: 90%;
+  max-width: 550px;
+  margin: 25px auto;
+  padding: 20px 25px;
+  border: 3px solid #3b82f6;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Form fields with custom outline on focus */
+.form-input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 16px 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: 3px solid #f59e0b;
+  border-color: #d97706;
+}
+
+/* Comparison: visibility: hidden vs display: none */
+.card-hidden {
+  visibility: hidden; /* Element takes up layout space but is invisible */
+}
+
+.card-none {
+  display: none; /* Element is completely removed from document flow */
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #e2e8f0;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}

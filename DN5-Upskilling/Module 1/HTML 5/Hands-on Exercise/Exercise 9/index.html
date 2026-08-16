@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 9 - Geolocation Event Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px;
+      background-color: #f8fafc;
+      color: #1e293b;
+    }
+
+    .card {
+      max-width: 550px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    button {
+      background-color: #059669;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: #047857;
+    }
+
+    .output-box {
+      margin-top: 25px;
+      padding: 15px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .error-msg {
+      color: #dc2626;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Find Nearby Events</h2>
+    <p>Click below to find community gatherings and venues near your current coordinates.</p>
+
+    <button onclick="findNearbyEvents()">Find Nearby Events</button>
+
+    <div id="locationOutput" class="output-box">
+      Location information will appear here...
+    </div>
+  </div>
+
+  <script>
+    function findNearbyEvents() {
+      const output = document.getElementById('locationOutput');
+
+      if (!navigator.geolocation) {
+        output.innerHTML = '<span class="error-msg">Geolocation is not supported by your browser.</span>';
+        return;
+      }
+
+      output.innerText = 'Acquiring high-accuracy location...';
+
+      const options = {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0
+      };
+
+      navigator.geolocation.getCurrentPosition(
+        // Success Callback
+        (position) => {
+          const lat = position.coords.latitude.toFixed(6);
+          const lon = position.coords.longitude.toFixed(6);
+          const accuracy = position.coords.accuracy.toFixed(1);
+
+          output.innerHTML = `
+            <strong>Location Found!</strong><br>
+            <strong>Latitude:</strong> ${lat}<br>
+            <strong>Longitude:</strong> ${lon}<br>
+            <strong>Accuracy:</strong> Within ${accuracy} meters<br><br>
+            <em>Found 3 upcoming community events within a 5 km radius.</em>
+          `;
+        },
+        // Error Callback
+        (error) => {
+          let msg = '';
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              msg = 'Permission denied. Please allow location access in your browser.';
+              break;
+            case error.POSITION_UNAVAILABLE:
+              msg = 'Location information is currently unavailable.';
+              break;
+            case error.TIMEOUT:
+              msg = 'The request to get user location timed out.';
+              break;
+            default:
+              msg = 'An unknown error occurred while retrieving location.';
+              break;
+          }
+          output.innerHTML = `<span class="error-msg">Error: ${msg}</span>`;
+        },
+        options
+      );
+    }
+  </script>
+</body>
+</html>

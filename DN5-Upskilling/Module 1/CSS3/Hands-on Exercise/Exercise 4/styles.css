@@ -1,0 +1,58 @@
+/* Fallback background color and image */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f6f9;
+  background-image: url('https://images.unsplash.com/photo-1511578314322-379afb476865?w=1600&auto=format&fit=crop&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Linear-gradient on section header banner with HEX text */
+.portal-header {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: #ffffff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.portal-header h1 {
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+/* RGBA background color for semi-transparent event cards */
+.event-card {
+  background-color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  max-width: 650px;
+  margin: 25px auto;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Linear gradient on event header */
+.section-header {
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.event-details {
+  color: #333333;
+  line-height: 1.6;
+}
+
+.badge-date {
+  background-color: rgba(30, 60, 114, 0.1);
+  color: #1e3c72;
+  padding: 6px 12px;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: bold;
+}

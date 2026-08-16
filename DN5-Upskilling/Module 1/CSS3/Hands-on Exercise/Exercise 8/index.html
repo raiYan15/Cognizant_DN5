@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 8 - Box Model & Layout Control</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Box Model & Visibility Demo</h1>
+
+  <section class="eventCard">
+    <h2>Event Registration (Outline on Focus)</h2>
+    <form>
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" class="form-input" placeholder="Click here to see active outline">
+
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" class="form-input" placeholder="Click here to see active outline">
+    </form>
+  </section>
+
+  <!-- Visible Card -->
+  <section class="eventCard">
+    <h2>Card 1: Active Event</h2>
+    <p>This card demonstrates content, padding, border, and margin.</p>
+  </section>
+
+  <!-- visibility: hidden (occupies space) -->
+  <section class="eventCard card-hidden">
+    <h2>Card 2: Hidden Event (visibility: hidden)</h2>
+    <p>This card is hidden but still occupies its layout space.</p>
+  </section>
+
+  <!-- display: none (occupies no space) -->
+  <section class="eventCard card-none">
+    <h2>Card 3: None Event (display: none)</h2>
+    <p>This card is completely removed from document flow.</p>
+  </section>
+
+  <!-- Next visible Card -->
+  <section class="eventCard">
+    <h2>Card 4: Next Active Event</h2>
+    <p>Notice the blank space above from Card 2 (visibility: hidden), while Card 3 (display: none) leaves no gap.</p>
+  </section>
+</body>
+</html>

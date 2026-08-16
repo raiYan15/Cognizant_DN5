@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 13 - Debugging and Testing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f8fafc;
+    }
+    .card {
+      max-width: 550px;
+      margin: 0 auto;
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    input, select {
+      width: 100%;
+      padding: 8px 12px;
+      margin: 6px 0 16px 0;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .instructions {
+      background: #f1f5f9;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 20px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>DevTools Debugging Lab</h2>
+    
+    <label for="debugName">User Name:</label>
+    <input type="text" id="debugName" value="Jordan Lee">
+
+    <label for="debugCategory">Event Category:</label>
+    <select id="debugCategory">
+      <option value="Cultural">Cultural</option>
+      <option value="Environmental">Environmental</option>
+      <option value="Educational">Educational</option>
+    </select>
+
+    <button onclick="processRegistration()">Run Registration (Pause on Breakpoint)</button>
+    <p id="debugOutput" style="margin-top: 15px; font-weight: bold; color: #059669;"></p>
+
+    <div class="instructions">
+      <strong>Inspection Steps:</strong>
+      <ol>
+        <li>Press <code>F12</code> to open DevTools.</li>
+        <li>Check <strong>Console</strong> for grouped step-by-step logs.</li>
+        <li>Inspect variables in the <strong>Sources</strong> tab when the <code>debugger;</code> line triggers.</li>
+        <li>Check the <strong>Network</strong> tab to view the HTTP POST payload and response.</li>
+      </ol>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

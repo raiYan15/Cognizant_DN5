@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 10.2 - Tabbed and Pill Navigation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container my-5">
+    <h2>Nav Tabs</h2>
+    <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab">Home</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab">Profile</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab">Contact</button>
+      </li>
+    </ul>
+    <div class="tab-content border border-top-0 p-3 mb-5" id="myTabContent">
+      <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel">This is the Home tab content.</div>
+      <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel">This is the Profile tab content.</div>
+      <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel">This is the Contact tab content.</div>
+    </div>
+
+    <h2>Nav Pills</h2>
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab">Dashboard</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab">Messages</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab">Settings</button>
+      </li>
+    </ul>
+    <div class="tab-content p-3 border rounded" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel">Dashboard view contents.</div>
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel">Messages list contents.</div>
+      <div class="tab-pane fade" id="pills-contact" role="tabpanel">Settings panel contents.</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

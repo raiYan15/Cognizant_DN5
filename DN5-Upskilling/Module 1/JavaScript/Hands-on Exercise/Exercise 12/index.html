@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 12 - AJAX & Fetch POST</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f8fafc;
+    }
+    .card {
+      max-width: 480px;
+      margin: 0 auto;
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 16px 0;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .status {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 4px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .success { background: #dcfce7; color: #166534; }
+    .error { background: #fee2e2; color: #991b1b; }
+    .info { background: #dbeafe; color: #1e40af; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>AJAX Registration (Fetch API)</h2>
+    <label for="postName">Attendee Name:</label>
+    <input type="text" id="postName" value="Alex Smith">
+
+    <label for="postEvent">Select Event:</label>
+    <select id="postEvent">
+      <option value="Coding Workshop">Coding Workshop</option>
+      <option value="Art Exhibition">Art Exhibition</option>
+    </select>
+
+    <button onclick="submitRegistration()">Register via POST Request</button>
+    <div id="postStatus"></div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

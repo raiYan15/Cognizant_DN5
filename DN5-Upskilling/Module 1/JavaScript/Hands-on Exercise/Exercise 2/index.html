@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 2 - Syntax, Data Types & Operators</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f1f5f9;
+    }
+    .card {
+      max-width: 550px;
+      margin: 0 auto;
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .btn {
+      padding: 10px 20px;
+      margin: 8px;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn-register { background: #2563eb; color: white; }
+    .btn-cancel { background: #dc2626; color: white; }
+    #eventDetails { font-size: 16px; margin: 20px 0; font-weight: bold; color: #1e293b; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Event Registration Dashboard</h2>
+    <div id="eventDetails"></div>
+    <button class="btn btn-register" onclick="registerSeat()">Register (-- seat)</button>
+    <button class="btn btn-cancel" onclick="cancelSeat()">Cancel (++ seat)</button>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

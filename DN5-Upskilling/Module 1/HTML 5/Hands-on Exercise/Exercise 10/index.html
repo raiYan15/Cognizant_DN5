@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 10 - Debugging with Chrome DevTools</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px;
+      background-color: #f8fafc;
+      color: #1e293b;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .inspect-box {
+      background-color: #eff6ff;
+      border: 2px solid #3b82f6;
+      padding: 20px;
+      border-radius: 6px;
+      margin: 20px 0;
+    }
+
+    button {
+      background-color: #4f46e5;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 10px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #4338ca;
+    }
+
+    .steps {
+      background-color: #f1f5f9;
+      padding: 15px 25px;
+      border-radius: 6px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>DevTools Debugging Lab</h1>
+    <p>Local Community Event Portal - Debugging & Inspection Environment</p>
+
+    <!-- Element to inspect and live modify in DevTools Elements tab -->
+    <div id="targetElement" class="inspect-box">
+      <h3>Inspectable Event Banner</h3>
+      <p id="eventDesc">Right click here and choose <strong>Inspect</strong> to edit CSS styles or HTML attributes live.</p>
+    </div>
+
+    <div>
+      <button onclick="logEventData()">Trigger Console Logs</button>
+      <button onclick="calculateTicketPrice(3, 25)">Trigger Debugger Breakpoint</button>
+    </div>
+
+    <h3 style="margin-top: 30px;">DevTools Testing Guide:</h3>
+    <ol class="steps">
+      <li><strong>Elements Tab:</strong> Inspect <code>#targetElement</code> and change its background color or font size live.</li>
+      <li><strong>Console Tab:</strong> Open DevTools (<code>F12</code> or <code>Ctrl+Shift+I</code>), click "Trigger Console Logs" to inspect table, info, and warn outputs.</li>
+      <li><strong>Sources Tab:</strong> Click "Trigger Debugger Breakpoint" to pause execution inside <code>calculateTicketPrice()</code> and inspect variables in the Scope pane.</li>
+    </ol>
+  </div>
+
+  <script>
+    // Console logging demonstrations
+    function logEventData() {
+      console.log("Portal initialized: Community Event Data Loaded.");
+      console.info("Fetching latest event records...");
+      
+      const sampleEvents = [
+        { id: 1, name: "Charity Marathon", attendees: 120, status: "Open" },
+        { id: 2, name: "Coding Workshop", attendees: 45, status: "Full" },
+        { id: 3, name: "Art Exhibition", attendees: 85, status: "Open" }
+      ];
+
+      console.table(sampleEvents);
+      console.warn("Notice: 1 event is currently at full capacity.");
+    }
+
+    // Function with debugger statement for breakpoint testing
+    function calculateTicketPrice(ticketQuantity, basePrice) {
+      let discountRate = 0.10; // 10% group discount
+      let subtotal = ticketQuantity * basePrice;
+      
+      // The debugger statement triggers DevTools execution pause when Sources tab is active
+      debugger;
+
+      let discountAmount = subtotal * discountRate;
+      let finalTotal = subtotal - discountAmount;
+
+      console.log(`Calculation complete: ${ticketQuantity} tickets at $${basePrice} with discount = $${finalTotal}`);
+      alert(`Final Total for ${ticketQuantity} tickets: $${finalTotal}`);
+      return finalTotal;
+    }
+  </script>
+</body>
+</html>

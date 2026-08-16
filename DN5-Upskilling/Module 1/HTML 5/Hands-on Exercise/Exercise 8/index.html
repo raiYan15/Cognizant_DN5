@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 8 - Saving User Preferences</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px;
+      background-color: #f1f5f9;
+      color: #1e293b;
+    }
+
+    .card {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      font-size: 15px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-save {
+      background-color: #2563eb;
+      color: white;
+    }
+
+    .btn-clear {
+      background-color: #ef4444;
+      color: white;
+    }
+
+    .status-msg {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>User Event Preferences</h2>
+    <p>Select your favorite event category. Your preference is saved locally across page reloads.</p>
+
+    <div class="form-group">
+      <label for="favCategory">Preferred Event Category:</label>
+      <select id="favCategory">
+        <option value="">-- Choose Category --</option>
+        <option value="Arts & Crafts">Arts & Crafts</option>
+        <option value="Sports & Fitness">Sports & Fitness</option>
+        <option value="Technology & Coding">Technology & Coding</option>
+        <option value="Music & Concerts">Music & Concerts</option>
+      </select>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn-save" onclick="savePreference()">Save Preference</button>
+      <button class="btn-clear" onclick="clearPreferences()">Clear Preferences</button>
+    </div>
+
+    <div id="statusMessage" class="status-msg"></div>
+  </div>
+
+  <script>
+    // Retrieve and pre-select stored preference on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedPreference = localStorage.getItem('userEventCategory');
+      if (savedPreference) {
+        document.getElementById('favCategory').value = savedPreference;
+        showStatus('Loaded saved preference: ' + savedPreference, '#dbeafe', '#1e40af');
+      }
+    });
+
+    // Save preference to localStorage
+    function savePreference() {
+      const selected = document.getElementById('favCategory').value;
+      if (selected) {
+        localStorage.setItem('userEventCategory', selected);
+        sessionStorage.setItem('lastSavedTime', new Date().toLocaleTimeString());
+        showStatus('Preference saved: ' + selected, '#dcfce7', '#166534');
+      } else {
+        showStatus('Please select a category first.', '#fee2e2', '#991b1b');
+      }
+    }
+
+    // Clear localStorage and sessionStorage
+    function clearPreferences() {
+      localStorage.clear();
+      sessionStorage.clear();
+      document.getElementById('favCategory').value = '';
+      showStatus('All preferences and session data cleared!', '#fef3c7', '#92400e');
+    }
+
+    function showStatus(msg, bg, color) {
+      const el = document.getElementById('statusMessage');
+      el.style.display = 'block';
+      el.style.backgroundColor = bg;
+      el.style.color = color;
+      el.innerText = msg;
+    }
+  </script>
+</body>
+</html>

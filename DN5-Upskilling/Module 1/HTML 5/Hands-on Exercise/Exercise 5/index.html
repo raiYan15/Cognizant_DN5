@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 5 - Event Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f5f9;
+      margin: 0;
+      padding: 30px;
+    }
+
+    .form-card {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #1e3a8a;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #334155;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 80px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1d4ed8;
+    }
+
+    output {
+      display: block;
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #dcfce7;
+      color: #166534;
+      border-radius: 4px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-card">
+    <h2>Event Registration Form</h2>
+    <form id="regForm" onsubmit="event.preventDefault(); document.getElementById('confirmation').value = 'Thank you, ' + document.getElementById('userName').value + '! Your registration for the ' + document.getElementById('eventType').value + ' on ' + document.getElementById('eventDate').value + ' is confirmed.';">
+      
+      <div class="form-group">
+        <label for="userName">Full Name</label>
+        <input type="text" id="userName" name="userName" placeholder="Enter your full name" autofocus required>
+      </div>
+
+      <div class="form-group">
+        <label for="userEmail">Email Address</label>
+        <input type="email" id="userEmail" name="userEmail" placeholder="you@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="eventDate">Preferred Date</label>
+        <input type="date" id="eventDate" name="eventDate" required>
+      </div>
+
+      <div class="form-group">
+        <label for="eventType">Event Type</label>
+        <select id="eventType" name="eventType" required>
+          <option value="">-- Choose an Event --</option>
+          <option value="Charity Fair">Charity Fair</option>
+          <option value="Coding Workshop">Coding Workshop</option>
+          <option value="Art Exhibition">Art Exhibition</option>
+          <option value="Music Night">Music Night</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="userMessage">Additional Message</label>
+        <textarea id="userMessage" name="userMessage" placeholder="Special requirements or questions..."></textarea>
+      </div>
+
+      <button type="submit">Submit Registration</button>
+
+      <output id="confirmation" for="userName eventType eventDate"></output>
+    </form>
+  </div>
+</body>
+</html>

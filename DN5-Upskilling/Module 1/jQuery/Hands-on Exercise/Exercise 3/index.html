@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 3 - jQuery Methods</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f8fafc;
+      text-align: center;
+    }
+    .box-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .box {
+      width: 120px;
+      height: 120px;
+      background-color: #3b82f6;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    button {
+      padding: 8px 16px;
+      background: #1e293b;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    button:hover {
+      background: #334155;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+  <h1>jQuery Effects and Methods</h1>
+
+  <div class="box-container">
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="box">Box 3</div>
+  </div>
+
+  <div class="button-group">
+    <button id="btnHide">.hide()</button>
+    <button id="btnShow">.show()</button>
+    <button id="btnFadeOut">.fadeOut()</button>
+    <button id="btnFadeIn">.fadeIn()</button>
+    <button id="btnToggle">.toggle()</button>
+    <button id="btnSlideChain">.slideUp().delay().slideDown()</button>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

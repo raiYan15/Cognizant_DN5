@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 7 - Video Invite & Media Events</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px;
+      background-color: #f1f5f9;
+      color: #1e293b;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    video {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .status-msg {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #059669;
+    }
+
+    .form-group {
+      margin-top: 25px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Community Festival Video Invitation</h2>
+    <p>Watch the promo video below for our upcoming annual neighborhood fest.</p>
+
+    <!-- Video Element with oncanplay event -->
+    <video 
+      controls 
+      oncanplay="document.getElementById('videoStatus').innerText = 'Status: Video ready to play!';"
+    >
+      <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div id="videoStatus" class="status-msg">Loading video stream...</div>
+
+    <!-- Form with onbeforeunload warning if unfinished -->
+    <div class="form-group">
+      <h3>RSVP for the Festival</h3>
+      <label for="rsvpName">Your Name:</label>
+      <input type="text" id="rsvpName" placeholder="Enter name">
+
+      <label for="rsvpNotes" style="display:block; margin-top: 12px;">Special Requests:</label>
+      <textarea id="rsvpNotes" placeholder="Any dietary restrictions or seating preferences..."></textarea>
+    </div>
+  </div>
+
+  <script>
+    // Warn user before leaving page if form has input
+    window.onbeforeunload = function (e) {
+      const name = document.getElementById('rsvpName').value;
+      const notes = document.getElementById('rsvpNotes').value;
+      if (name || notes) {
+        return "You have unsaved changes in your RSVP form!";
+      }
+    };
+  </script>
+</body>
+</html>

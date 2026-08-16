@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 5 - Working with Events</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f8fafc;
+      text-align: center;
+    }
+    .card {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    #colorBox {
+      width: 250px;
+      height: 150px;
+      margin: 20px auto;
+      border: 2px solid #334155;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: background-color 0.2s;
+    }
+    #colorBtn {
+      padding: 10px 20px;
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+  <div class="card">
+    <h2>jQuery Click & Double-Click Events</h2>
+    <div id="colorBox">Color: White</div>
+    <button id="colorBtn">Click (Red) / Double Click (White)</button>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

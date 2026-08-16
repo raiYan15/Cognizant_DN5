@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 6 - jQuery Event Helpers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f8fafc;
+    }
+    .card {
+      max-width: 550px;
+      margin: 0 auto;
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    #interactiveBox {
+      padding: 25px;
+      border: 3px solid #94a3b8;
+      background-color: #f1f5f9;
+      border-radius: 6px;
+      text-align: center;
+      cursor: pointer;
+      margin: 20px 0;
+      transition: border-color 0.2s, background-color 0.2s;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 10px;
+    }
+    .log-box {
+      background: #e2e8f0;
+      padding: 12px;
+      border-radius: 4px;
+      margin-top: 15px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+  <div class="card">
+    <h2>jQuery Event Helpers Playground</h2>
+    
+    <div id="interactiveBox">
+      <strong>Interactive Event Target Box</strong>
+      <p style="margin: 6px 0 0 0; font-size: 13px;">(Click, Double-Click, MouseEnter, MouseLeave)</p>
+    </div>
+    <div id="hoverStatus" style="font-size: 13px; color: #475569;">Status: Mouse outside box</div>
+
+    <label for="interactiveInput" style="display:block; margin-top: 20px; font-weight: bold;">Keyboard Event Helper:</label>
+    <input type="text" id="interactiveInput" placeholder="Type here to trigger keypress/keydown...">
+    <div id="keyOutput" style="font-size: 13px; color: #0369a1; margin-top: 6px;">Last Key Pressed: None</div>
+
+    <div id="eventLog" class="log-box">Event action logs will appear here.</div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

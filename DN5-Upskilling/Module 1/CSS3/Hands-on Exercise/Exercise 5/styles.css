@@ -1,0 +1,74 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Roboto:ital,wght@0,400;0,500;1,400&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  background-color: #f8fafc;
+  color: #2d3748;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #1a202c;
+  color: #ffffff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: #a0aec0;
+}
+
+.event-article {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: left;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  color: #2b6cb0;
+  margin-bottom: 12px;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: justify;
+  line-height: 1.8;
+  letter-spacing: 0.3px;
+  margin-bottom: 15px;
+}
+
+.note {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  color: #718096;
+  text-align: right;
+}

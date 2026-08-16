@@ -1,0 +1,42 @@
+/* 1. Universal selector to reset margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #eef2f5;
+  color: #333333;
+}
+
+/* 2. ID selector for header banner */
+#mainHeader {
+  background-color: #1a365d;
+  color: #ffffff;
+  padding: 30px;
+  text-align: center;
+}
+
+/* 3. Element selector for all h2 elements */
+h2 {
+  color: #2b6cb0;
+  margin-bottom: 12px;
+}
+
+/* 4. Class selector for event containers */
+.eventCard {
+  background-color: #ffffff;
+  margin: 20px auto;
+  max-width: 650px;
+  padding: 24px;
+  border-radius: 8px;
+  border-left: 5px solid #3182ce;
+}
+
+/* 5. Grouping selector for h3 and p */
+h3, p {
+  line-height: 1.5;
+  margin-bottom: 8px;
+}

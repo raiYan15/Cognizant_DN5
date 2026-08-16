@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- =============================================
+       Exercise 1.2: Bootstrap 5 via Downloaded Files
+       Bootstrap CSS and JS are served LOCALLY —
+       no internet required after setup.
+       ============================================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise 1.2 – Bootstrap 5 (Downloaded Files)</title>
+
+  <!-- -----------------------------------------------
+       Local Bootstrap CSS
+       Path: css/bootstrap.min.css
+       This file was downloaded from the Bootstrap
+       official website / npm package.
+  ----------------------------------------------- -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+  <!-- Custom styles (minimal overrides only) -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- =============================================
+       NAVBAR
+       - navbar-expand-md : collapses below md (768px)
+       - bg-dark / navbar-dark : dark theme
+  ============================================= -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow">
+    <div class="container">
+      <!-- Brand with a small badge -->
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <span class="badge bg-warning text-dark">Local</span>
+        Bootstrap&nbsp;5
+      </a>
+
+      <!-- Hamburger toggler (visible on small screens) -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNav"
+        aria-controls="mainNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible nav links -->
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#setup">Setup</a></li>
+          <li class="nav-item"><a class="nav-link" href="#structure">Structure</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =============================================
+       HERO SECTION
+  ============================================= -->
+  <header class="hero-section text-white text-center py-5">
+    <div class="container py-3">
+      <span class="badge bg-warning text-dark mb-3 px-3 py-2 fs-6">
+        Exercise 1.2
+      </span>
+      <h1 class="display-4 fw-bold">Bootstrap via Downloaded Files</h1>
+      <p class="lead mt-3 mb-4">
+        No CDN. No internet dependency. Bootstrap CSS and JS are hosted
+        <strong>right inside your project folder</strong>.
+      </p>
+      <a href="#setup" class="btn btn-warning btn-lg fw-semibold me-2">
+        How It Works
+      </a>
+      <a href="#structure" class="btn btn-outline-light btn-lg">
+        Folder Structure
+      </a>
+    </div>
+  </header>
+
+  <!-- =============================================
+       SETUP STEPS SECTION
+       Demonstrates: row, col, card, list-group
+  ============================================= -->
+  <section id="setup" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center fw-bold mb-2">How to Set Up Bootstrap Locally</h2>
+      <p class="text-center text-muted mb-5">
+        Three simple steps — works completely offline after setup.
+      </p>
+
+      <div class="row g-4">
+
+        <!-- Step 1 -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <!-- Step number header -->
+            <div class="card-header bg-dark text-white text-center fs-4 fw-bold py-3">
+              Step 1
+            </div>
+            <div class="card-body p-4">
+              <h5 class="card-title fw-bold">Download Bootstrap</h5>
+              <p class="card-text text-muted mb-3">
+                Visit
+                <a href="https://getbootstrap.com" target="_blank"
+                   class="text-decoration-none fw-semibold">
+                  getbootstrap.com
+                </a>
+                and click <strong>"Download"</strong>. You get a
+                <code>.zip</code> containing compiled CSS and JS.
+              </p>
+              <!-- list-group for sub-items -->
+              <ul class="list-group list-group-flush small">
+                <li class="list-group-item px-0">
+                  📦 <code>bootstrap.min.css</code>
+                </li>
+                <li class="list-group-item px-0">
+                  📦 <code>bootstrap.bundle.min.js</code>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-header bg-primary text-white text-center fs-4 fw-bold py-3">
+              Step 2
+            </div>
+            <div class="card-body p-4">
+              <h5 class="card-title fw-bold">Organise Your Folder</h5>
+              <p class="card-text text-muted mb-3">
+                Place the downloaded files into <code>css/</code> and
+                <code>js/</code> subfolders inside your project directory.
+              </p>
+              <ul class="list-group list-group-flush small">
+                <li class="list-group-item px-0">
+                  📁 <code>project/css/bootstrap.min.css</code>
+                </li>
+                <li class="list-group-item px-0">
+                  📁 <code>project/js/bootstrap.bundle.min.js</code>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-header bg-success text-white text-center fs-4 fw-bold py-3">
+              Step 3
+            </div>
+            <div class="card-body p-4">
+              <h5 class="card-title fw-bold">Link in Your HTML</h5>
+              <p class="card-text text-muted mb-3">
+                Use <strong>relative paths</strong> in your HTML to point to
+                the local files — no CDN URL needed.
+              </p>
+              <ul class="list-group list-group-flush small">
+                <li class="list-group-item px-0">
+                  🔗 <code>&lt;link href="css/bootstrap.min.css"&gt;</code>
+                </li>
+                <li class="list-group-item px-0">
+                  🔗 <code>&lt;script src="js/bootstrap.bundle.min.js"&gt;</code>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </section>
+
+  <!-- =============================================
+       FOLDER STRUCTURE SECTION
+       Demonstrates: table, badge, alert
+  ============================================= -->
+  <section id="structure" class="py-5">
+    <div class="container">
+      <h2 class="fw-bold mb-2">Project Folder Structure</h2>
+      <p class="text-muted mb-4">
+        This exercise's actual directory layout on disk:
+      </p>
+
+      <!-- Alert to explain local vs CDN -->
+      <div class="alert alert-success d-flex align-items-start gap-3" role="alert">
+        <span class="fs-4">✅</span>
+        <div>
+          <strong>Offline Ready!</strong> Because Bootstrap is downloaded locally,
+          this page works even without an internet connection — ideal for
+          production deployments or air-gapped environments.
+        </div>
+      </div>
+
+      <!-- Table showing folder structure -->
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th>Path</th>
+              <th>Type</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>Exercise 1/2/</code></td>
+              <td><span class="badge bg-secondary">Folder</span></td>
+              <td>Project root</td>
+            </tr>
+            <tr>
+              <td><code>Exercise 1/2/index.html</code></td>
+              <td><span class="badge bg-primary">HTML</span></td>
+              <td>Main webpage — this file</td>
+            </tr>
+            <tr>
+              <td><code>Exercise 1/2/style.css</code></td>
+              <td><span class="badge bg-info text-dark">CSS</span></td>
+              <td>Custom styles (minimal overrides)</td>
+            </tr>
+            <tr>
+              <td><code>Exercise 1/2/css/bootstrap.min.css</code></td>
+              <td><span class="badge bg-success">Bootstrap CSS</span></td>
+              <td>Full Bootstrap stylesheet (local copy)</td>
+            </tr>
+            <tr>
+              <td><code>Exercise 1/2/js/bootstrap.bundle.min.js</code></td>
+              <td><span class="badge bg-warning text-dark">Bootstrap JS</span></td>
+              <td>Bootstrap JS + Popper.js (local copy)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- CDN vs Local comparison -->
+      <h3 class="fw-semibold mt-5 mb-3">CDN vs Downloaded — Quick Comparison</h3>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="card border-danger">
+            <div class="card-header bg-danger text-white fw-bold">CDN (Exercise 1.1)</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">🌐 Requires internet connection</li>
+              <li class="list-group-item">⚡ No files to maintain locally</li>
+              <li class="list-group-item">🔄 Always gets latest cached version</li>
+              <li class="list-group-item">📉 Depends on third-party server uptime</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card border-success">
+            <div class="card-header bg-success text-white fw-bold">Downloaded (Exercise 1.2)</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">✅ Works completely offline</li>
+              <li class="list-group-item">🔒 Full control over the version used</li>
+              <li class="list-group-item">🚀 Can be served via your own fast server</li>
+              <li class="list-group-item">🛠️ Customisable with Sass (later exercises)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /container -->
+  </section>
+
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer class="bg-dark text-white text-center py-3">
+    <p class="mb-0">
+      &copy; 2025 Bootstrap 5 Exercises &mdash;
+      <span class="text-warning">Exercise 1.2</span> &mdash;
+      <small class="text-muted">Bootstrap loaded from local files</small>
+    </p>
+  </footer>
+
+  <!-- -----------------------------------------------
+       Local Bootstrap JS Bundle
+       Path: js/bootstrap.bundle.min.js
+       Placed before closing body — activates all
+       interactive components (navbar toggle, etc.)
+  ----------------------------------------------- -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

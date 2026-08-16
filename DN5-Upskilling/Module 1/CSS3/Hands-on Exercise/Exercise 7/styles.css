@@ -1,0 +1,56 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8fafc;
+  margin: 0;
+  padding: 20px;
+  color: #333333;
+}
+
+h1 {
+  text-align: center;
+  color: #1e293b;
+  margin-bottom: 25px;
+}
+
+.table-container {
+  max-width: 800px;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+/* Table styling with collapse */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Table headers */
+th {
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 14px 16px;
+  text-align: center;
+  border: 1px solid #1d4ed8;
+}
+
+/* Table data cells */
+td {
+  padding: 12px 16px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+}
+
+/* Zebra striping on even rows */
+tr:nth-child(even) {
+  background-color: #f1f5f9;
+}
+
+/* Hover effect on table rows */
+tr:hover {
+  background-color: #e2e8f0;
+}

@@ -1,0 +1,5 @@
+[
+  { "id": 1, "title": "Spring Flower Festival", "date": "May 10", "seats": 30 },
+  { "id": 2, "title": "Outdoor Filmmaking Workshop", "date": "June 15", "seats": 15 },
+  { "id": 3, "title": "Community Chess Championship", "date": "July 20", "seats": 40 }
+]

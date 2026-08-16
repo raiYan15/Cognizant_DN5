@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 9 - Async JavaScript & Promises</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f8fafc;
+    }
+    .card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .spinner {
+      display: none;
+      width: 24px;
+      height: 24px;
+      border: 3px solid #cbd5e1;
+      border-top: 3px solid #2563eb;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      vertical-align: middle;
+      margin-left: 10px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .async-card {
+      border: 1px solid #e2e8f0;
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin-top: 10px;
+      background: #f8fafc;
+    }
+    button {
+      padding: 8px 16px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Asynchronous Event Loader</h2>
+    <div>
+      <button onclick="fetchWithPromises()">Load with Promises</button>
+      <button onclick="fetchWithAsyncAwait()">Load with Async/Await</button>
+      <div id="spinner" class="spinner"></div>
+    </div>
+    <div id="eventList" style="margin-top: 20px;"></div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

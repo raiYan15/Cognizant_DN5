@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8fafc;
+  color: #333333;
+}
+
+/* Header with responsive viewport units */
+.hero-header {
+  background-color: #1e3a8a;
+  color: #ffffff;
+  min-height: 25vh;
+  padding: 4vh 5vw;
+  text-align: center;
+}
+
+.hero-header h1 {
+  font-size: 3vw;
+}
+
+/* Navigation - Desktop (Flexbox horizontal) */
+.nav-container {
+  background-color: #0f172a;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px 5vw;
+}
+
+.nav-container a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+}
+
+/* Events Grid - CSS Grid Layout */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 90%;
+  margin: 40px auto;
+}
+
+.event-card {
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.event-card-content {
+  padding: 20px;
+}
+
+.event-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #1e3a8a;
+}
+
+/* Responsive Media Query for screens smaller than 768px */
+@media (max-width: 768px) {
+  .hero-header h1 {
+    font-size: 24px;
+  }
+
+  /* Stack navigation links vertically */
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  /* Switch grid to 1 column */
+  .events-grid {
+    grid-template-columns: 1fr;
+    max-width: 95%;
+    margin: 20px auto;
+  }
+
+  /* Reduce image size */
+  .event-card img {
+    height: 160px;
+  }
+
+  .event-card h3 {
+    font-size: 1.1rem;
+  }
+}

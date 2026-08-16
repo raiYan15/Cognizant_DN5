@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 6 - Event Feedback & Event Handling</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px;
+      background-color: #f8fafc;
+      color: #1e293b;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .error {
+      color: #dc2626;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .fee-badge {
+      font-weight: bold;
+      color: #059669;
+      margin-top: 6px;
+    }
+
+    .char-counter {
+      text-align: right;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .poster-preview {
+      width: 180px;
+      transition: width 0.3s ease;
+      cursor: pointer;
+      border-radius: 6px;
+      border: 2px solid #3b82f6;
+    }
+
+    .poster-enlarged {
+      width: 350px !important;
+    }
+
+    button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Community Event Feedback</h2>
+
+    <!-- ondblclick on image to toggle enlargement -->
+    <div class="form-group text-center">
+      <label>Event Poster (Double-click to enlarge/shrink):</label>
+      <img 
+        id="eventPoster" 
+        src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=500&auto=format&fit=crop&q=80" 
+        alt="Event Poster" 
+        class="poster-preview"
+        ondblclick="this.classList.toggle('poster-enlarged');"
+      >
+    </div>
+
+    <!-- onchange to display event fee -->
+    <div class="form-group">
+      <label for="eventSelect">Select Attended Event:</label>
+      <select id="eventSelect" onchange="
+        const fees = { 'marathon': '$10 Registration Fee', 'art': 'Free Admission', 'coding': '$25 Workshop Fee' };
+        document.getElementById('feeDisplay').innerText = 'Event Fee: ' + (fees[this.value] || 'Select an event');
+      ">
+        <option value="">-- Choose Event --</option>
+        <option value="marathon">Charity Marathon</option>
+        <option value="art">Art Exhibition</option>
+        <option value="coding">Coding Workshop</option>
+      </select>
+      <div id="feeDisplay" class="fee-badge"></div>
+    </div>
+
+    <!-- onblur to validate 10-digit phone number -->
+    <div class="form-group">
+      <label for="phoneInput">Contact Phone:</label>
+      <input 
+        type="tel" 
+        id="phoneInput" 
+        placeholder="10-digit number e.g. 1234567890" 
+        onblur="
+          const regex = /^\d{10}$/;
+          const err = document.getElementById('phoneError');
+          if (this.value && !regex.test(this.value)) {
+            err.innerText = 'Please enter a valid 10-digit phone number.';
+          } else {
+            err.innerText = '';
+          }
+        "
+      >
+      <div id="phoneError" class="error"></div>
+    </div>
+
+    <!-- onkeyup/oninput to count characters in textarea -->
+    <div class="form-group">
+      <label for="feedbackText">Your Feedback:</label>
+      <textarea 
+        id="feedbackText" 
+        rows="4" 
+        placeholder="Share your thoughts on the event..."
+        onkeyup="document.getElementById('charCount').innerText = this.value.length;"
+      ></textarea>
+      <div class="char-counter">Characters typed: <span id="charCount">0</span></div>
+    </div>
+
+    <!-- onclick to show confirmation alert / message -->
+    <button type="button" onclick="alert('Thank you! Your feedback has been successfully submitted.');">
+      Submit Feedback
+    </button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 4 - Event Image Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f8fafc;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1e293b;
+    }
+
+    table {
+      margin: 20px auto;
+      border-collapse: separate;
+      border-spacing: 20px;
+    }
+
+    td {
+      text-align: center;
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-img {
+      width: 220px;
+      height: 150px;
+      object-fit: cover;
+      border: 3px solid #3b82f6;
+      border-radius: 6px;
+    }
+
+    .caption {
+      margin-top: 8px;
+      font-weight: 600;
+      color: #334155;
+    }
+  </style>
+</head>
+<body>
+  <h1>Community Event Gallery</h1>
+
+  <table>
+    <tr>
+      <td>
+        <img class="gallery-img" src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=400&auto=format&fit=crop&q=80" alt="Tech Conference" title="Community Tech Summit">
+        <div class="caption">Tech Summit</div>
+      </td>
+      <td>
+        <img class="gallery-img" src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=400&auto=format&fit=crop&q=80" alt="Street Festival" title="Annual Street Fair">
+        <div class="caption">Street Fair</div>
+      </td>
+      <td>
+        <img class="gallery-img" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&auto=format&fit=crop&q=80" alt="Outdoor Yoga" title="Morning Yoga Session">
+        <div class="caption">Morning Yoga</div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img class="gallery-img" src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&auto=format&fit=crop&q=80" alt="Live Music" title="Park Summer Concert">
+        <div class="caption">Summer Concert</div>
+      </td>
+      <td>
+        <img class="gallery-img" src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=400&auto=format&fit=crop&q=80" alt="Charity Gala" title="Annual Charity Banquet">
+        <div class="caption">Charity Banquet</div>
+      </td>
+      <td>
+        <img class="gallery-img" src="https://images.unsplash.com/photo-1560523159-4a9692d222ef?w=400&auto=format&fit=crop&q=80" alt="Art Workshop" title="Community Painting Workshop">
+        <div class="caption">Art Workshop</div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
