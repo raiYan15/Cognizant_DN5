@@ -1,4 +1,4 @@
-# 🚀 Cognizant DN5 - Full Stack & Database Upskilling Repository
+# 🚀 Cognizant DN5 - Upskilling
 
 [![.NET](https://img.shields.io/badge/.NET-10.0%20%2F%208.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
 [![C#](https://img.shields.io/badge/C%23-12.0-239120?logo=csharp&logoColor=white)](https://learn.microsoft.com/en-us/dotnet/csharp/)
